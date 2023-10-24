@@ -1,6 +1,6 @@
-package com.fiap.fiapburger.adapter.driver.api.services;
+package com.fiap.fiapburger.core.application.ports;
 
-import com.fiap.fiapburger.adapter.driver.api.model.cliente.ClienteDTO;
+import com.fiap.fiapburger.core.domain.ClienteDTO;
 
 public interface ClienteService {
 

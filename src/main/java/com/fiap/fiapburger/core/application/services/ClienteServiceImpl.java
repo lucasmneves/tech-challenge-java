@@ -1,4 +1,4 @@
-package com.fiap.fiapburger.adapter.driver.api.services.impl;
+package com.fiap.fiapburger.core.application.services;
 
 
 import java.util.Optional;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import com.fiap.fiapburger.adapter.driven.infra.ClienteRepository;
 import com.fiap.fiapburger.adapter.driver.api.controller.checkout.exception.ClienteNaoEncontradoException;
 import com.fiap.fiapburger.adapter.driver.api.controller.checkout.exception.ExceptionsMessageEnum;
-import com.fiap.fiapburger.adapter.driver.api.model.cliente.ClienteDTO;
-import com.fiap.fiapburger.adapter.driver.api.services.ClienteService;
+import com.fiap.fiapburger.core.application.ports.ClienteService;
+import com.fiap.fiapburger.core.domain.ClienteDTO;
 
 @Service
 public class ClienteServiceImpl implements ClienteService{

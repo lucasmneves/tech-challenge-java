@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fiap.fiapburger.adapter.driver.api.model.cliente.ClienteDTO;
-import com.fiap.fiapburger.adapter.driver.api.services.impl.ClienteServiceImpl;
+import com.fiap.fiapburger.core.application.services.ClienteServiceImpl;
+import com.fiap.fiapburger.core.domain.ClienteDTO;
 
 @RestController
 @RequestMapping("/client")
