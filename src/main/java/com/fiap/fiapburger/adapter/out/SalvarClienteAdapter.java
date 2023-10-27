@@ -1,5 +1,6 @@
 package com.fiap.fiapburger.adapter.out;
 
+import com.fiap.fiapburger.adapter.out.repository.ClienteRepository;
 import com.fiap.fiapburger.adapter.out.repository.mapper.ClienteEntityMapper;
 import com.fiap.fiapburger.application.core.domain.ClienteDTO;
 import com.fiap.fiapburger.application.ports.out.SalvarClienteOutputPort;
