@@ -32,7 +32,7 @@ CREATE TABLE "public"."historico" (
 CREATE SEQUENCE itens_pedido_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
 
 CREATE TABLE "public"."itens_pedido" (
-    "id" integer DEFAULT nextval('itens_pedido_id_seq') NOT NULL,
+    "id" character(36)  NOT NULL,
     "id_produto" character(36) NOT NULL,
     "id_pedido" character(36) NOT NULL,
     CONSTRAINT "itens_pedido_pkey" PRIMARY KEY ("id")
@@ -115,4 +115,10 @@ VALUES ('1', 'Carrinho aberto'),  ('2', 'Carrinho confirmado'),  ('3', 'Pagament
 
 INSERT INTO "pagamento" ("id", "nome")
 VALUES ('0', 'Pagamento nao selecionado'), ('1', 'Debito'),  ('2', 'Credito'),  ('3', 'Mercado pago');
+
+INSERT INTO "categoria" ("id", "nome", "descricao")
+VALUES ('1', 'Lanches', 'Lanches'), ('2', 'Bebida', 'Bebida'),  ('3', 'Acompanhamento', 'Acompanhamento'),  ('4', 'Sobremesa', 'Sobremesa');
+
+INSERT INTO "produtos" ("id", "nome", "descricao", "url_imagem", "preco", "categoria")
+VALUES ('1', 'Hamburguer', 'Pao, alface, molho, queijo', 'path/hamburguer.png', '10', '1'), ('2', 'Coca-cola', 'Sem acucar', 'path/coca.png', '5', '2'), ('3', 'Batata frita', '', 'path/batata.png', '7', '3');
 

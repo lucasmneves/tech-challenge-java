@@ -5,15 +5,18 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
-public class SalvarPedidoRequest implements Serializable {
+public class EditarPedidoRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @NotBlank
-    @JsonProperty("cpf")
-    private String cpf;
+    @JsonProperty("id_pedido")
+    private String idPedido;
+
+    @JsonProperty("id_produto")
+    private ArrayList<String> idProduto;
 
 }
