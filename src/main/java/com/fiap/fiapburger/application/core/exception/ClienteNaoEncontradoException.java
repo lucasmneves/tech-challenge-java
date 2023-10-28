@@ -1,4 +1,4 @@
-package com.fiap.fiapburger.adapter.driver.api.controller.checkout.exception;
+package com.fiap.fiapburger.application.core.exception;
 
 public class ClienteNaoEncontradoException extends RuntimeException{
 

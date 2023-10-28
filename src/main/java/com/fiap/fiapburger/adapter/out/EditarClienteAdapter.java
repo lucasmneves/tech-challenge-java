@@ -1,7 +1,7 @@
 package com.fiap.fiapburger.adapter.out;
 
-import com.fiap.fiapburger.adapter.driver.api.controller.checkout.exception.ClienteNaoEncontradoException;
-import com.fiap.fiapburger.adapter.driver.api.controller.checkout.exception.ExceptionsMessageEnum;
+import com.fiap.fiapburger.application.core.exception.ClienteNaoEncontradoException;
+import com.fiap.fiapburger.application.core.exception.ExceptionsMessageEnum;
 import com.fiap.fiapburger.adapter.out.repository.ClienteRepository;
 import com.fiap.fiapburger.adapter.out.repository.entity.ClienteEntity;
 import com.fiap.fiapburger.adapter.out.repository.mapper.ClienteEntityMapper;
@@ -23,12 +23,14 @@ public class EditarClienteAdapter implements EditarClienteOutputPort {
     @Override
     public void editar(ClienteDTO cliente) {
 
-        var clienteEntity = clienteMapper.toClienteEntity(cliente);
-        Optional<ClienteEntity> clienteEntityBd = clienteRepository.findById(cliente.getCpf());
-        if(clienteEntityBd.isPresent()){
-            clienteEntityBd.get().setCpf(clienteEntity.getCpf());
-            clienteEntityBd.get().setNome(clienteEntity.getNome());
-            clienteEntityBd.get().setEmail(clienteEntity.getEmail());
+        Optional<ClienteEntity> clienteEntity = clienteRepository.findById(cliente.getCpf());
+        if(clienteEntity.isPresent()){
+
+            clienteEntity.get().setCpf(cliente.getCpf());
+            clienteEntity.get().setNome(cliente.getNome());
+            clienteEntity.get().setEmail(cliente.getEmail());
+
+            clienteRepository.save(clienteEntity.get());
         }else{
 
             throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.CLIENTE_NAO_ENCONTRADO.value());

@@ -1,17 +1,18 @@
-/*
-package com.fiap.fiapburger.adapter.driver.api.controller.checkout.exception.handler;
+
+package com.fiap.fiapburger.adapter.out.handler;
 
 import java.util.Date;
 
+import com.fiap.fiapburger.application.core.exception.ClienteNaoEncontradoException;
+import com.fiap.fiapburger.application.core.exception.ExceptionResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.fiap.fiapburger.adapter.driver.api.controller.checkout.exception.ClienteNaoEncontradoException;
-import com.fiap.fiapburger.adapter.driver.api.controller.checkout.exception.ExceptionResponse;
-
+@ControllerAdvice
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler{
 
 	@ExceptionHandler(RuntimeException.class)
@@ -36,4 +37,4 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 		return new ResponseEntity<>(exception, HttpStatus.NOT_FOUND);
 	}
 }
-*/
+
