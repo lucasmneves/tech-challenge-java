@@ -13,7 +13,7 @@ public class EditarProdutoUseCase implements EditarProdutoInputPort {
     }
 
     @Override
-    public ProdutoDTO editar(ProdutoDTO produto) {
-        return outputPort.editar(produto);
+    public void editar(ProdutoDTO produto) {
+        outputPort.editar(produto);
     }
 }

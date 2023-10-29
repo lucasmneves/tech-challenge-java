@@ -1,4 +1,4 @@
-package com.fiap.fiapburger.application.infra;
+package com.fiap.fiapburger.adapter.out.infra;
 
 
 import org.springframework.context.annotation.Bean;
@@ -21,5 +21,4 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
                     .paths(PathSelectors.any())
                     .build();
         }
-    }
-}
+    };

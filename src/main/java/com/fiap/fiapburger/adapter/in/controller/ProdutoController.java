@@ -19,6 +19,7 @@ public class ProdutoController {
     private final EditarProdutoInputPort editarProdutoInputPort;
     private final DeletarProdutoInputPort deletarProdutoInputPort;
 
+
     @Autowired
     public ProdutoController(SalvarProdutoInputPort salvarProdutoInputPort,
                              BuscarProdutoInputPort buscarProdutoInputPort,
@@ -32,25 +33,26 @@ public class ProdutoController {
 
     @PostMapping
     public ResponseEntity<ProdutoResponse> salvarProduto(@RequestBody ProdutoRequest produtoRequest) {
-        ProdutoResponse produtoResponse = salvarProdutoInputPort.salvarProduto(produtoRequest);
+
+        ProdutoResponse produtoResponse = salvarProdutoInputPort.salvar(produtoRequest);
         return ResponseEntity.ok(produtoResponse);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ProdutoResponse> buscarProduto(@PathVariable Long id) {
-        ProdutoResponse produtoResponse = buscarProdutoInputPort.buscarProduto(id);
+        ProdutoResponse produtoResponse = buscarProdutoInputPort.buscar(id);
         return ResponseEntity.ok(produtoResponse);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ProdutoResponse> editarProduto(@PathVariable Long id, @RequestBody ProdutoRequest produtoRequest) {
-        ProdutoResponse produtoResponse = editarProdutoInputPort.editarProduto(id, produtoRequest);
+        ProdutoResponse produtoResponse = editarProdutoInputPort.editar(id, produtoRequest);
         return ResponseEntity.ok(produtoResponse);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarProduto(@PathVariable Long id) {
-        deletarProdutoInputPort.deletarProduto(id);
+        deletarProdutoInputPort.deletar(id);
         return ResponseEntity.noContent().build();
     }
 }
