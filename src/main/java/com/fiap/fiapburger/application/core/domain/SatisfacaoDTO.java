@@ -4,13 +4,12 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class ItensPedidoDTO implements Serializable {
+public class SatisfacaoDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private String id;
-    private String produto;
-    private String pedido;
+    private String nome;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -24,19 +23,11 @@ public class ItensPedidoDTO implements Serializable {
         this.id = id;
     }
 
-    public String getProduto() {
-        return produto;
+    public String getNome() {
+        return nome;
     }
 
-    public void setProduto(String produto) {
-        this.produto = produto;
-    }
-
-    public String getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(String pedido) {
-        this.pedido = pedido;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

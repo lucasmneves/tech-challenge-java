@@ -10,22 +10,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
 
 @Entity
-@Table(name="itens_pedido")
+@Table(name="pagamento")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
 @Getter
 @Setter
-public class ItensPedidoEntity implements Serializable {
+public class PagamentoEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private String id;
-	private String produto;
-	private String pedido;
-
+	private String nome;
+	
 }

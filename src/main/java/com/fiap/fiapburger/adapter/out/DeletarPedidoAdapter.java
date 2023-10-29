@@ -31,9 +31,9 @@ public class DeletarPedidoAdapter implements DeletarPedidoOutputPort {
 
     @Override
     public void removerItens(String idProduto, String idPedido) {
-        var itensPedido = itensPedidoRepository.findById("1bde1a43-3d9c-42dc-b502-da7be7681611");
+        var itensPedido = itensPedidoRepository.findByProdutoAndPedido(idProduto, idPedido);
         if(itensPedido.isPresent()){
-            itensPedidoRepository.deleteById("1bde1a43-3d9c-42dc-b502-da7be7681611");
+            itensPedidoRepository.deleteById(itensPedido.get().getId());
         }else{
             throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.CLIENTE_NAO_ENCONTRADO.value());
         }

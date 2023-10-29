@@ -13,10 +13,10 @@ public class AdicionarItensPedidoRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("id_pedido")
+    @JsonProperty("pedido")
     private String idPedido;
 
-    @JsonProperty("id_produto")
+    @JsonProperty("produto")
     private String idProduto;
 
 }

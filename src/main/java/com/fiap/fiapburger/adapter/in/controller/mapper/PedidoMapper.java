@@ -18,8 +18,8 @@ public interface PedidoMapper {
 
     static public ItensPedidoDTO adicionarItensPedido(AdicionarItensPedidoRequest adicionarItensPedidoRequest) {
         ItensPedidoDTO itensPedido = new ItensPedidoDTO();
-        itensPedido.setId_pedido(adicionarItensPedidoRequest.getIdPedido());
-        itensPedido.setId_produto(adicionarItensPedidoRequest.getIdProduto());
+        itensPedido.setPedido(adicionarItensPedidoRequest.getIdPedido());
+        itensPedido.setProduto(adicionarItensPedidoRequest.getIdProduto());
         return itensPedido;
     }
 
@@ -31,8 +31,8 @@ public interface PedidoMapper {
 
     static public ItensPedidoDTO removerItensPedido(RemoverItensPedidoRequest removerItensPedidoRequest) {
         ItensPedidoDTO itensPedido = new ItensPedidoDTO();
-        itensPedido.setId_pedido(removerItensPedidoRequest.getIdPedido());
-        itensPedido.setId_produto(removerItensPedidoRequest.getIdProduto());
+        itensPedido.setPedido(removerItensPedidoRequest.getIdPedido());
+        itensPedido.setProduto(removerItensPedidoRequest.getIdProduto());
         return itensPedido;
     }
 }

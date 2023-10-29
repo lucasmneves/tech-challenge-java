@@ -10,8 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface ItensPedidoRepository extends JpaRepository<ItensPedidoEntity, String>{
-    //@Query("FROM itens_pedido ip WHERE ip.id_produto = :id_produto AND ip.id_pedido = :id_pedido")
-    //Optional<ItensPedidoEntity> findByIdProdutoAndIdPedido(String id_produto, String id_pedido);
-
-
+    Optional<ItensPedidoEntity> findByProdutoAndPedido(String produto, String pedido);
 }

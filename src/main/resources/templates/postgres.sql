@@ -50,14 +50,14 @@ CREATE SEQUENCE pedido_senha_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACH
 CREATE TABLE "public"."pedido" (
     "id" character(36)  NOT NULL,
     "senha" character(10) DEFAULT 'nextval(''pedido_senha_seq'')',
-    "id_status" character(5) NOT NULL,
+    "id_status" character(1) NOT NULL,
     "cpf" character(11),
     "detalhes" character(255),
     "valor_total" money NOT NULL,
     "data_hora_inicio" timestamp NOT NULL,
     "data_hora_fim" timestamp,
-    "id_pagamento" character(36),
-    "id_satisfacao" character(36),
+    "id_pagamento" character(1),
+    "id_satisfacao" character(1),
     CONSTRAINT "pedido_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
