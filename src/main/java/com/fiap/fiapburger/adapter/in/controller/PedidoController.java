@@ -36,10 +36,10 @@ public class PedidoController {
     private PedidoMapper pedidoMapper;
 
     @PostMapping
-    public ResponseEntity<String> salvar(@Valid @RequestBody SalvarPedidoRequest salvarPedidoRequest){
+    public ResponseEntity<String> salvar(@Valid @RequestBody SalvarPedidoRequest salvarPedidoRequest,  UriComponentsBuilder uriComponentsBuilder){
         var pedido = pedidoMapper.toPedido(salvarPedidoRequest);
         salvarPedidoInputPort.salvar(pedido);
-        return ResponseEntity.ok("Carrinho criado para o cliente " + salvarPedidoRequest.getCpf() + " com sucesso!");
+        return ResponseEntity.created(uriComponentsBuilder.path("/pedido/{id}").buildAndExpand(pedido.getId()).toUri()).build();
     }
 
     @PatchMapping
@@ -51,18 +51,18 @@ public class PedidoController {
         return ResponseEntity.ok("Carrinho atualizado com sucesso!");
     };
 
-    @GetMapping()
-    public ResponseEntity<PedidoResponse> buscar(@RequestParam String id){
-        var pedido = buscarPedidoInputPort.buscaPedido(id);
-        return ResponseEntity.ok(pedido);
-    }
-
     @DeleteMapping()
     public ResponseEntity<String> deletar(@Valid @RequestBody RemoverItensPedidoRequest removerItensPedidoRequest){
         ItensPedidoDTO itensPedido = PedidoMapper.removerItensPedido(removerItensPedidoRequest);
         deletarPedidoInputPort.removerItens(removerItensPedidoRequest.getIdProduto(), removerItensPedidoRequest.getIdPedido());
         deletarPedidoInputPort.deletar(removerItensPedidoRequest.getIdProduto(), removerItensPedidoRequest.getIdPedido());
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PedidoResponse> buscar(@PathVariable String id, UriComponentsBuilder uriComponentsBuilder){
+        var pedido = buscarPedidoInputPort.buscaPedido(id);
+        return ResponseEntity.ok(pedido);
     }
 
 }
