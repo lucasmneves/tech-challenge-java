@@ -20,11 +20,13 @@ public class EditarProdutoAdapter implements EditarProdutoOutputPort {
     private ProdutoEntityMapper produtoEntityMapper;
 
     @Override
-    public void editar(ProdutoDTO produtoDTO) {
-        ProdutoEntity produtoEntity = produtoRepository.findById(produtoDTO.getId())
+    public ProdutoDTO editar(String id, ProdutoDTO produtoDTO) {
+        ProdutoEntity produtoEntity = produtoRepository.findById(id)
                 .orElseThrow(() -> new ProdutoNaoEncontradoException(ExceptionsMessageEnum.PRODUTO_NAO_ENCONTRADO.value()));
 
         produtoEntityMapper.updateEntityFromDTO(produtoDTO, produtoEntity);
-        produtoRepository.save(produtoEntity);
+        ProdutoEntity updatedEntity = produtoRepository.save(produtoEntity);
+
+        return produtoEntityMapper.toProdutoDTO(updatedEntity);
     }
 }

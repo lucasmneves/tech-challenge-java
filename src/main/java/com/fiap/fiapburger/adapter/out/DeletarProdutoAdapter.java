@@ -12,7 +12,7 @@ public class DeletarProdutoAdapter implements DeletarProdutoOutputPort {
     private ProdutoRepository produtoRepository;
 
     @Override
-    public void deletar(Long id) {
+    public void deletar(String id) {
         produtoRepository.deleteById(id);
     }
 }

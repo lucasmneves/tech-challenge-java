@@ -13,11 +13,14 @@ import java.util.Optional;
 @Component
 public class BuscarProdutoAdapter implements BuscarProdutoOutputPort {
 
-    @Autowired
-    private ProdutoRepository produtoRepository;
+    private final ProdutoRepository produtoRepository;
+    private final ProdutoEntityMapper produtoMapper;
 
     @Autowired
-    private ProdutoEntityMapper produtoMapper;
+    public BuscarProdutoAdapter(ProdutoRepository produtoRepository, ProdutoEntityMapper produtoMapper) {
+        this.produtoRepository = produtoRepository;
+        this.produtoMapper = produtoMapper;
+    }
 
     @Override
     public ProdutoDTO buscar(String id) {
