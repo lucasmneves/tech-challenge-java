@@ -23,10 +23,7 @@ public class PedidoEntity implements Serializable {
 
 	@Id
 	private String id;
-
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String senha;
-
+	private Long senha;
 	private String id_status;
 	private String cpf;
 	private String detalhes;

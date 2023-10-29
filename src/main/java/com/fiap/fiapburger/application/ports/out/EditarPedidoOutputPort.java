@@ -2,7 +2,9 @@ package com.fiap.fiapburger.application.ports.out;
 
 
 import com.fiap.fiapburger.application.core.domain.ItensPedidoDTO;
+import com.fiap.fiapburger.application.core.domain.PedidoDTO;
 
 public interface EditarPedidoOutputPort {
-    void editar(ItensPedidoDTO itensPedido);
+    void adicionarItens(ItensPedidoDTO itensPedido);
+    void editar(PedidoDTO pedido, ItensPedidoDTO itensPedido);
 }

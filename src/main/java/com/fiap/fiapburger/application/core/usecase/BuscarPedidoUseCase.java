@@ -2,19 +2,22 @@
 package com.fiap.fiapburger.application.core.usecase;
 
 import com.fiap.fiapburger.adapter.in.controller.response.ClienteResponse;
+import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
 import com.fiap.fiapburger.application.ports.in.BuscarClienteInputPort;
+import com.fiap.fiapburger.application.ports.in.BuscarPedidoInputPort;
 import com.fiap.fiapburger.application.ports.out.BuscarClienteOutputPort;
+import com.fiap.fiapburger.application.ports.out.BuscarPedidoOutputPort;
 
 
-public class BuscarClienteUseCase implements BuscarClienteInputPort {
-    private final BuscarClienteOutputPort buscarClienteOutputPort;
-    public BuscarClienteUseCase(BuscarClienteOutputPort buscarClienteOutputPort) {
-        this.buscarClienteOutputPort = buscarClienteOutputPort;
+public class BuscarPedidoUseCase implements BuscarPedidoInputPort {
+    private final BuscarPedidoOutputPort buscarPedidoOutputPort;
+    public BuscarPedidoUseCase(BuscarPedidoOutputPort buscarPedidoOutputPort) {
+        this.buscarPedidoOutputPort = buscarPedidoOutputPort;
     }
     @Override
-    public ClienteResponse BuscaCliente(String cpf) {
+    public PedidoResponse buscaPedido(String id) {
 
-       return this.buscarClienteOutputPort.buscar(cpf);
+       return this.buscarPedidoOutputPort.buscar(id);
     }
 }
 

@@ -33,30 +33,29 @@ CREATE SEQUENCE itens_pedido_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 C
 
 CREATE TABLE "public"."itens_pedido" (
     "id" character(36)  NOT NULL,
-    "id_produto" character(36) NOT NULL,
-    "id_pedido" character(36) NOT NULL,
+    "produto" character(36) NOT NULL,
+    "pedido" character(36) NOT NULL,
     CONSTRAINT "itens_pedido_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
 
-CREATE SEQUENCE pagamento_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
-
 CREATE TABLE "public"."pagamento" (
-    "id" character(36) DEFAULT 'nextval(''pagamento_id_seq'')' NOT NULL,
+    "id" character(1) NOT NULL,
     "nome" character(50) NOT NULL,
     CONSTRAINT "pagamento_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
+CREATE SEQUENCE pedido_senha_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
 
 CREATE TABLE "public"."pedido" (
     "id" character(36)  NOT NULL,
-    "senha" character(10) NOT NULL,
+    "senha" character(10) DEFAULT 'nextval(''pedido_senha_seq'')',
     "id_status" character(5) NOT NULL,
     "cpf" character(11),
     "detalhes" character(255),
     "valor_total" money NOT NULL,
     "data_hora_inicio" timestamp NOT NULL,
-    "data_hora_fim" timestamp NOT NULL,
+    "data_hora_fim" timestamp,
     "id_pagamento" character(36),
     "id_satisfacao" character(36),
     CONSTRAINT "pedido_pkey" PRIMARY KEY ("id")
@@ -74,19 +73,15 @@ CREATE TABLE "public"."produtos" (
 ) WITH (oids = false);
 
 
-CREATE SEQUENCE satisfacao_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
-
 CREATE TABLE "public"."satisfacao" (
-    "id" character(36) DEFAULT 'nextval(''satisfacao_id_seq'')' NOT NULL,
+    "id" character(1)  NOT NULL,
     "nome" character(50) NOT NULL,
     CONSTRAINT "satisfacao_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
 
-CREATE SEQUENCE status_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
-
 CREATE TABLE "public"."status" (
-    "id" character(5) DEFAULT 'nextval(''status_id_seq'')' NOT NULL,
+    "id" character(1)  NOT NULL,
     "descricao" character(255) NOT NULL,
     CONSTRAINT "status_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
@@ -95,8 +90,8 @@ CREATE TABLE "public"."status" (
 ALTER TABLE ONLY "public"."historico" ADD CONSTRAINT "historico_id_pedido_fkey" FOREIGN KEY (id_pedido) REFERENCES pedido(id) NOT DEFERRABLE;
 ALTER TABLE ONLY "public"."historico" ADD CONSTRAINT "historico_id_status_fkey" FOREIGN KEY (id_status) REFERENCES status(id) NOT DEFERRABLE;
 
-ALTER TABLE ONLY "public"."itens_pedido" ADD CONSTRAINT "itens_pedido_id_pedido_fkey" FOREIGN KEY (id_pedido) REFERENCES pedido(id) NOT DEFERRABLE;
-ALTER TABLE ONLY "public"."itens_pedido" ADD CONSTRAINT "itens_pedido_id_produto_fkey" FOREIGN KEY (id_produto) REFERENCES produtos(id) NOT DEFERRABLE;
+ALTER TABLE ONLY "public"."itens_pedido" ADD CONSTRAINT "itens_pedido_pedido_fkey" FOREIGN KEY (pedido) REFERENCES pedido(id) NOT DEFERRABLE;
+ALTER TABLE ONLY "public"."itens_pedido" ADD CONSTRAINT "itens_pedido_produto_fkey" FOREIGN KEY (produto) REFERENCES produtos(id) NOT DEFERRABLE;
 
 --ALTER TABLE ONLY "public"."pedido" ADD CONSTRAINT "pedido_cpf_fkey" FOREIGN KEY (cpf) REFERENCES cliente(cpf) NOT DEFERRABLE;
 ALTER TABLE ONLY "public"."pedido" ADD CONSTRAINT "pedido_id_pagamento_fkey" FOREIGN KEY (id_pagamento) REFERENCES pagamento(id) NOT DEFERRABLE;

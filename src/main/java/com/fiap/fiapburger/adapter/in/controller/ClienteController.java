@@ -54,5 +54,4 @@ public class ClienteController {
        deletarClienteInputPort.deletar(cpf);
        return ResponseEntity.noContent().build();
    }
-
 }

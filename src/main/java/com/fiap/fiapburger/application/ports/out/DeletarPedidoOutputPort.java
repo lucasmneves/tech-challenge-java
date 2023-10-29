@@ -1,5 +1,6 @@
 package com.fiap.fiapburger.application.ports.out;
 
-public interface DeletarClienteOutputPort {
-    void deletar(String cpf);
+public interface DeletarPedidoOutputPort {
+    void deletar(String idProduto, String idPedidos);
+    void removerItens(String idProduto, String idPedidos);
 }

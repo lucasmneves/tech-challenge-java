@@ -1,13 +1,18 @@
 package com.fiap.fiapburger.adapter.in.controller;
 
 import com.fiap.fiapburger.adapter.in.controller.mapper.PedidoMapper;
-import com.fiap.fiapburger.adapter.in.controller.request.EditarPedidoRequest;
+import com.fiap.fiapburger.adapter.in.controller.request.AdicionarItensPedidoRequest;
+import com.fiap.fiapburger.adapter.in.controller.request.RemoverItensPedidoRequest;
 import com.fiap.fiapburger.adapter.in.controller.request.SalvarPedidoRequest;
+import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
+import com.fiap.fiapburger.adapter.out.repository.entity.PedidoEntity;
 import com.fiap.fiapburger.application.core.domain.ItensPedidoDTO;
+import com.fiap.fiapburger.application.core.domain.PedidoDTO;
 import com.fiap.fiapburger.application.ports.in.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 
@@ -22,6 +27,12 @@ public class PedidoController {
     private EditarPedidoInputPort editarPedidoInputPort;
 
     @Autowired
+    private BuscarPedidoInputPort buscarPedidoInputPort;
+
+    @Autowired
+    private DeletarPedidoInputPort deletarPedidoInputPort;
+
+    @Autowired
     private PedidoMapper pedidoMapper;
 
     @PostMapping
@@ -32,27 +43,26 @@ public class PedidoController {
     }
 
     @PatchMapping
-    public ResponseEntity<String> editar(@Valid @RequestBody EditarPedidoRequest editarPedidoRequest){
-        System.out.println("teste: " + editarPedidoRequest.getIdProduto().get(0));
-        ItensPedidoDTO itensPedido = PedidoMapper.editarPedido(editarPedidoRequest);
-        editarPedidoInputPort.editar(itensPedido);
-        return ResponseEntity.ok("Carrinho editado com sucesso!");
+    public ResponseEntity<String> adicionarItensPedido(@Valid @RequestBody AdicionarItensPedidoRequest adicionarItensPedidoRequest){
+        ItensPedidoDTO itensPedido = PedidoMapper.adicionarItensPedido(adicionarItensPedidoRequest);
+        PedidoDTO pedido = PedidoMapper.editar(adicionarItensPedidoRequest);
+        editarPedidoInputPort.adicionarItens(itensPedido);
+        editarPedidoInputPort.editar(pedido, itensPedido);
+        return ResponseEntity.ok("Carrinho atualizado com sucesso!");
     };
 
-    @GetMapping
-    public ResponseEntity<String> buscar(){
-        return ResponseEntity.ok("Carrinho consulta com sucesso!");
+    @GetMapping()
+    public ResponseEntity<PedidoResponse> buscar(@RequestParam String id){
+        var pedido = buscarPedidoInputPort.buscaPedido(id);
+        return ResponseEntity.ok(pedido);
     }
 
-    @GetMapping("/lista")
-    public ResponseEntity<String> listar(){
-        return ResponseEntity.ok("Carrinho lista com sucesso!");
+    @DeleteMapping()
+    public ResponseEntity<String> deletar(@Valid @RequestBody RemoverItensPedidoRequest removerItensPedidoRequest){
+        ItensPedidoDTO itensPedido = PedidoMapper.removerItensPedido(removerItensPedidoRequest);
+        deletarPedidoInputPort.removerItens(removerItensPedidoRequest.getIdProduto(), removerItensPedidoRequest.getIdPedido());
+        deletarPedidoInputPort.deletar(removerItensPedidoRequest.getIdProduto(), removerItensPedidoRequest.getIdPedido());
+        return ResponseEntity.noContent().build();
     }
 
-
-
-    @DeleteMapping
-    public ResponseEntity<String> deletar(){
-        return ResponseEntity.ok("Carrinho deletado com sucesso!");
-    };
 }

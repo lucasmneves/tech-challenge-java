@@ -1,10 +1,10 @@
 package com.fiap.fiapburger.adapter.in.controller.mapper;
 
-import com.fiap.fiapburger.adapter.in.controller.request.EditarPedidoRequest;
+import com.fiap.fiapburger.adapter.in.controller.request.AdicionarItensPedidoRequest;
+import com.fiap.fiapburger.adapter.in.controller.request.RemoverItensPedidoRequest;
 import com.fiap.fiapburger.adapter.in.controller.request.SalvarPedidoRequest;
 import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
 import com.fiap.fiapburger.adapter.out.repository.entity.PedidoEntity;
-import com.fiap.fiapburger.adapter.out.repository.mapper.ItensPedidoEntityMapper;
 import com.fiap.fiapburger.application.core.domain.ItensPedidoDTO;
 import com.fiap.fiapburger.application.core.domain.PedidoDTO;
 import org.mapstruct.Mapper;
@@ -16,10 +16,23 @@ public interface PedidoMapper {
     PedidoDTO toPedido(SalvarPedidoRequest salvarPedidoRequest);
     PedidoResponse toPedidoResponse(PedidoEntity pedidoEntity);
 
-    static public ItensPedidoDTO editarPedido(EditarPedidoRequest editarPedidoRequest) {
+    static public ItensPedidoDTO adicionarItensPedido(AdicionarItensPedidoRequest adicionarItensPedidoRequest) {
         ItensPedidoDTO itensPedido = new ItensPedidoDTO();
-        itensPedido.setId_pedido(editarPedidoRequest.getIdPedido());
-        itensPedido.setId_produto(editarPedidoRequest.getIdProduto().get(0));
+        itensPedido.setId_pedido(adicionarItensPedidoRequest.getIdPedido());
+        itensPedido.setId_produto(adicionarItensPedidoRequest.getIdProduto());
+        return itensPedido;
+    }
+
+    static public PedidoDTO editar(AdicionarItensPedidoRequest adicionarItensPedidoRequest) {
+        PedidoDTO pedidoDTO = new PedidoDTO();
+        pedidoDTO.setId(adicionarItensPedidoRequest.getIdPedido());
+        return pedidoDTO;
+    }
+
+    static public ItensPedidoDTO removerItensPedido(RemoverItensPedidoRequest removerItensPedidoRequest) {
+        ItensPedidoDTO itensPedido = new ItensPedidoDTO();
+        itensPedido.setId_pedido(removerItensPedidoRequest.getIdPedido());
+        itensPedido.setId_produto(removerItensPedidoRequest.getIdProduto());
         return itensPedido;
     }
 }

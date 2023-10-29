@@ -2,24 +2,19 @@ package com.fiap.fiapburger.application.core.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.UUID;
 
-public class PedidoDTO implements Serializable {
+public class ProdutoDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private String id;
-    private Long senha;
-    private String id_status;
-    private String cpf;
-    private String detalhes;
-    private BigDecimal valor_total;
-    private Date data_hora_inicio;
-    private Date data_hora_fim;
-    private String id_pagamento;
-    private String id_satisfacao;
+    private String nome;
+    private String descricao;
+    private String url_imagem;
+    private BigDecimal preco;
+    private String categoria;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -33,75 +28,43 @@ public class PedidoDTO implements Serializable {
         this.id = id;
     }
 
-    public Long getSenha() {
-        return senha;
+    public String getNome() {
+        return nome;
     }
 
-    public void setSenha(Long senha) {
-        this.senha = senha;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getId_status() {
-        return id_status;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setId_status(String id_status) {
-        this.id_status = id_status;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getUrl_imagem() {
+        return url_imagem;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setUrl_imagem(String url_imagem) {
+        this.url_imagem = url_imagem;
     }
 
-    public String getDetalhes() {
-        return detalhes;
+    public BigDecimal getPreco() {
+        return preco;
     }
 
-    public void setDetalhes(String detalhes) {
-        this.detalhes = detalhes;
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
     }
 
-    public BigDecimal getValor_total() {
-        return valor_total;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setValor_total(BigDecimal valor_total) {
-        this.valor_total = valor_total;
-    }
-
-    public Date getData_hora_inicio() {
-        return data_hora_inicio;
-    }
-
-    public void setData_hora_inicio(Date data_hora_inicio) {
-        this.data_hora_inicio = data_hora_inicio;
-    }
-
-    public Date getData_hora_fim() {
-        return data_hora_fim;
-    }
-
-    public void setData_hora_fim(Date data_hora_fim) {
-        this.data_hora_fim = data_hora_fim;
-    }
-
-    public String getId_pagamento() {
-        return id_pagamento;
-    }
-
-    public void setId_pagamento(String id_pagamento) {
-        this.id_pagamento = id_pagamento;
-    }
-
-    public String getId_satisfacao() {
-        return id_satisfacao;
-    }
-
-    public void setId_satisfacao(String id_satisfacao) {
-        this.id_satisfacao = id_satisfacao;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

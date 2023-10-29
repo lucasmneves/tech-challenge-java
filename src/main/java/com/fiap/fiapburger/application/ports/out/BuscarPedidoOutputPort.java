@@ -1,8 +1,8 @@
 package com.fiap.fiapburger.application.ports.out;
 
-import com.fiap.fiapburger.adapter.in.controller.response.ClienteResponse;
+import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
 
-public interface BuscarClienteOutputPort {
+public interface BuscarPedidoOutputPort {
 
-    ClienteResponse buscar (String cpf);
+    PedidoResponse buscar (String id);
 }
