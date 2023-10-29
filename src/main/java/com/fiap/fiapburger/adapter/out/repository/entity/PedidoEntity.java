@@ -24,16 +24,13 @@ public class PedidoEntity implements Serializable {
 	@Id
 	private String id;
 	private Long senha;
-	@JoinColumn(name = "id")
-	private StatusEntity id_status;
+	private String id_status;
 	private String cpf;
 	private String detalhes;
 	private BigDecimal valor_total;
 	private Date data_hora_inicio;
 	private Date data_hora_fim;
-	@JoinColumn(name = "id")
-	private PagamentoEntity id_pagamento;
-	@JoinColumn(name = "id")
-	private SatisfacaoEntity id_satisfacao;
+	private String id_pagamento;
+	private String id_satisfacao;
 		
 }
