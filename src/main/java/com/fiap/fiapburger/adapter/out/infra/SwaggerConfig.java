@@ -1,4 +1,4 @@
-package com.fiap.fiapburger.adapter.out.infra;
+/*package com.fiap.fiapburger.adapter.out.infra;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
@@ -19,3 +19,4 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
                     .build();
         }
     }
+*/

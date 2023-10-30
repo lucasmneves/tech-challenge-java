@@ -1,5 +1,5 @@
-/*
-package com.fiap.fiapburger.adapter.out;
+
+package com.fiap.fiapburger.adapter.out.pedido;
 
 import com.fiap.fiapburger.adapter.out.repository.ClienteRepository;
 import com.fiap.fiapburger.adapter.out.repository.ItensPedidoRepository;
@@ -61,4 +61,4 @@ public class DeletarPedidoAdapter implements DeletarPedidoOutputPort {
         }
     }
 }
-*/
+

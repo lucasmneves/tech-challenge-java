@@ -1,5 +1,5 @@
-/*
-package com.fiap.fiapburger.adapter.out;
+
+package com.fiap.fiapburger.adapter.out.pedido;
 
 import com.fiap.fiapburger.adapter.in.controller.mapper.ClienteMapper;
 import com.fiap.fiapburger.adapter.in.controller.mapper.PedidoMapper;
@@ -42,4 +42,4 @@ public class BuscarPedidoAdapter implements BuscarPedidoOutputPort {
 
 
 }
-*/
+

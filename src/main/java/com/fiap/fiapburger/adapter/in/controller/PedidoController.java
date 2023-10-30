@@ -1,4 +1,3 @@
-/*
 package com.fiap.fiapburger.adapter.in.controller;
 
 import com.fiap.fiapburger.adapter.in.controller.mapper.PedidoMapper;
@@ -6,10 +5,12 @@ import com.fiap.fiapburger.adapter.in.controller.request.AdicionarItensPedidoReq
 import com.fiap.fiapburger.adapter.in.controller.request.RemoverItensPedidoRequest;
 import com.fiap.fiapburger.adapter.in.controller.request.SalvarPedidoRequest;
 import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
-import com.fiap.fiapburger.adapter.out.repository.entity.PedidoEntity;
 import com.fiap.fiapburger.application.core.domain.ItensPedidoDTO;
 import com.fiap.fiapburger.application.core.domain.PedidoDTO;
-import com.fiap.fiapburger.application.ports.in.*;
+import com.fiap.fiapburger.application.ports.in.pedido.BuscarPedidoInputPort;
+import com.fiap.fiapburger.application.ports.in.pedido.DeletarPedidoInputPort;
+import com.fiap.fiapburger.application.ports.in.pedido.EditarPedidoInputPort;
+import com.fiap.fiapburger.application.ports.in.pedido.SalvarPedidoInputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -67,4 +68,3 @@ public class PedidoController {
     }
 
 }
-*/

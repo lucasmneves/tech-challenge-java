@@ -18,6 +18,6 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface PagamentoMapper {
 
-    PagamentoResponse toListaPagamentoResponse(PagamentoEntity pagamentoEntity);
+    List<PagamentoResponse> toListaPagamentoResponse(List<PagamentoEntity> pagamentoEntity);
 
 }

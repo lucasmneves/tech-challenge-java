@@ -1,9 +1,11 @@
 
-package com.fiap.fiapburger.application.core.usecase;
+package com.fiap.fiapburger.application.core.usecase.pagamento;
 
 import com.fiap.fiapburger.adapter.in.controller.response.PagamentoResponse;
-import com.fiap.fiapburger.application.ports.in.ListarMeioPagamentoInputPort;
-import com.fiap.fiapburger.application.ports.out.ListarMeioPagamentoOutputPort;
+import com.fiap.fiapburger.application.ports.in.pagamento.ListarMeioPagamentoInputPort;
+import com.fiap.fiapburger.application.ports.out.pagamento.ListarMeioPagamentoOutputPort;
+
+import java.util.List;
 
 
 public class ListarMeioPagamentoUseCase implements ListarMeioPagamentoInputPort {
@@ -12,8 +14,8 @@ public class ListarMeioPagamentoUseCase implements ListarMeioPagamentoInputPort 
         this.listarMeioPagamentoOutputPort = listarMeioPagamentoOutputPort;
     }
     @Override
-    public PagamentoResponse listaMeio() {
-       return this.listarMeioPagamentoOutputPort.listaMeio();
+    public List<PagamentoResponse> listaMeio() {
+        return this.listarMeioPagamentoOutputPort.listaMeio();
     }
 }
 

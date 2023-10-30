@@ -1,5 +1,5 @@
-/*
-package com.fiap.fiapburger.adapter.out;
+
+package com.fiap.fiapburger.adapter.out.pedido;
 
 import com.fiap.fiapburger.adapter.out.repository.ItensPedidoRepository;
 import com.fiap.fiapburger.adapter.out.repository.PedidoRepository;
@@ -64,4 +64,4 @@ public class EditarPedidoAdapter implements EditarPedidoOutputPort {
         }
     }
 }
-*/
+
