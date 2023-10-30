@@ -106,7 +106,7 @@ INSERT INTO "satisfacao" ("id", "nome")
 VALUES ('0', 'Sem avaliacao'),  ('5', 'Otimo'),  ('4', 'Bom'), ('3', 'Regular'), ('2', 'Ruim'),  ('1', 'Pessimo');
 
 INSERT INTO "status" ("id", "descricao")
-VALUES ('1', 'Carrinho aberto'),  ('2', 'Carrinho confirmado'),  ('3', 'Pagamento efetuado'), ('4', 'Recebido'), ('5', 'Recebido'),  ('6', 'Em preparo'), ('7', 'Pronto'), ('8', 'Entregue ao cliente');
+VALUES ('1', 'Carrinho aberto'),  ('2', 'Carrinho confirmado'),  ('3', 'Pagamento efetuado'), ('4', 'Recebido'),  ('5', 'Em preparo'), ('6', 'Pronto'), ('7', 'Entregue ao cliente');
 
 INSERT INTO "pagamento" ("id", "nome")
 VALUES ('0', 'Pagamento nao selecionado'), ('1', 'Debito'),  ('2', 'Credito'),  ('3', 'Mercado pago');

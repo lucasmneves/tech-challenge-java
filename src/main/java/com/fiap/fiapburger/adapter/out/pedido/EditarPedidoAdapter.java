@@ -52,7 +52,7 @@ public class EditarPedidoAdapter implements EditarPedidoOutputPort {
         if(produtoEntity.isPresent()){
             valor = produtoEntity.get().getPreco();
         }else{
-            throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.CLIENTE_NAO_ENCONTRADO.value());
+            throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.PEDIDO_NAO_ENCONTRADO.value());
         }
 
         Optional<PedidoEntity> pedidoEntity = pedidoRepository.findById(pedido.getId());
@@ -60,7 +60,7 @@ public class EditarPedidoAdapter implements EditarPedidoOutputPort {
             pedidoEntity.get().setValor_total(pedidoEntity.get().getValor_total().add(valor));
             pedidoRepository.save(pedidoEntity.get());
         }else{
-            throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.CLIENTE_NAO_ENCONTRADO.value());
+            throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.PEDIDO_NAO_ENCONTRADO.value());
         }
     }
 }

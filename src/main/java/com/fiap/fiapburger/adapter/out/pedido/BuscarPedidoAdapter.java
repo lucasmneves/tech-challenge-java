@@ -30,13 +30,12 @@ public class BuscarPedidoAdapter implements BuscarPedidoOutputPort {
     @Override
     public PedidoResponse buscar(String id) {
 
-        System.out.print("teste: " + id);
         Optional<PedidoEntity> pedido = pedidoRepository.findById(id);
 
         if(pedido.isPresent()){
             return pedidoMapper.toPedidoResponse(pedido.get());
         }else{
-            throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.CLIENTE_NAO_ENCONTRADO.value());
+            throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.PEDIDO_NAO_ENCONTRADO.value());
         }
     }
 

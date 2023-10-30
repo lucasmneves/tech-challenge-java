@@ -17,9 +17,6 @@ public class EfetuarPagamentoUseCase implements EfetuarPagamentoInputPort {
     @Override
     public EfetuarPagamentoResponse efetuarPagamento(EfetuarPagamentoResponse efetuarPagamentoResponse) {
 
-        BigDecimal valor = new BigDecimal("0");
-        efetuarPagamentoResponse.setValor(valor);
-        efetuarPagamentoResponse.setTipoPagamento("Mercado pago");
         efetuarPagamentoResponse.setStatus("Pendente");
         efetuarPagamentoResponse.setQrCode("0000028930293029309COM.MERCADOLIBRE012983012780as9880-28379-2938291-sa1203891702856749012831s08ag89s7Testing21983xx12382718");
 
