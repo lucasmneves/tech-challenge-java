@@ -11,4 +11,5 @@ import java.util.Optional;
 @Repository
 public interface ItensPedidoRepository extends JpaRepository<ItensPedidoEntity, String>{
     Optional<ItensPedidoEntity> findByProdutoAndPedido(String produto, String pedido);
+    List<ItensPedidoEntity> findAllByPedido(String pedido);
 }

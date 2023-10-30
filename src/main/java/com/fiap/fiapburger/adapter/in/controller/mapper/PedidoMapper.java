@@ -1,6 +1,7 @@
 package com.fiap.fiapburger.adapter.in.controller.mapper;
 
 import com.fiap.fiapburger.adapter.in.controller.request.AdicionarItensPedidoRequest;
+import com.fiap.fiapburger.adapter.in.controller.request.ConfirmarPedidoRequest;
 import com.fiap.fiapburger.adapter.in.controller.request.RemoverItensPedidoRequest;
 import com.fiap.fiapburger.adapter.in.controller.request.SalvarPedidoRequest;
 import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
@@ -34,5 +35,14 @@ public interface PedidoMapper {
         itensPedido.setPedido(removerItensPedidoRequest.getIdPedido());
         itensPedido.setProduto(removerItensPedidoRequest.getIdProduto());
         return itensPedido;
+    }
+
+    static public PedidoDTO confirmarPedido(ConfirmarPedidoRequest confirmarPedidoRequest) {
+        PedidoDTO pedido = new PedidoDTO();
+
+        pedido.setId(confirmarPedidoRequest.getIdPedido());
+        pedido.setDetalhes(confirmarPedidoRequest.getDetalhes());
+
+        return pedido;
     }
 }

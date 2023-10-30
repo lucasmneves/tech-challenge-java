@@ -7,6 +7,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class PedidoResponse implements Serializable {
@@ -43,4 +44,6 @@ public class PedidoResponse implements Serializable {
     @JsonProperty("id_satisfacao")
     private String id_satisfacao;
 
+    @JsonProperty("itens_pedido")
+    private List<ItensPedidoResponse> itensPedido;
 }

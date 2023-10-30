@@ -2,15 +2,13 @@ package com.fiap.fiapburger.adapter.in.controller;
 
 import com.fiap.fiapburger.adapter.in.controller.mapper.PedidoMapper;
 import com.fiap.fiapburger.adapter.in.controller.request.AdicionarItensPedidoRequest;
+import com.fiap.fiapburger.adapter.in.controller.request.ConfirmarPedidoRequest;
 import com.fiap.fiapburger.adapter.in.controller.request.RemoverItensPedidoRequest;
 import com.fiap.fiapburger.adapter.in.controller.request.SalvarPedidoRequest;
 import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
 import com.fiap.fiapburger.application.core.domain.ItensPedidoDTO;
 import com.fiap.fiapburger.application.core.domain.PedidoDTO;
-import com.fiap.fiapburger.application.ports.in.pedido.BuscarPedidoInputPort;
-import com.fiap.fiapburger.application.ports.in.pedido.DeletarPedidoInputPort;
-import com.fiap.fiapburger.application.ports.in.pedido.EditarPedidoInputPort;
-import com.fiap.fiapburger.application.ports.in.pedido.SalvarPedidoInputPort;
+import com.fiap.fiapburger.application.ports.in.pedido.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +33,9 @@ public class PedidoController {
     private DeletarPedidoInputPort deletarPedidoInputPort;
 
     @Autowired
+    private ConfirmarPedidoInputPort confirmarPedidoInputPort;
+
+    @Autowired
     private PedidoMapper pedidoMapper;
 
     @PostMapping
@@ -50,7 +51,14 @@ public class PedidoController {
         PedidoDTO pedido = PedidoMapper.editar(adicionarItensPedidoRequest);
         editarPedidoInputPort.adicionarItens(itensPedido);
         editarPedidoInputPort.editar(pedido, itensPedido);
-        return ResponseEntity.ok("Carrinho atualizado com sucesso!");
+        return ResponseEntity.ok("Pedido atualizado com sucesso!");
+    };
+
+    @PatchMapping("/confirmar")
+    public ResponseEntity<String> confirmarCarrinho(@Valid @RequestBody ConfirmarPedidoRequest confirmarPedidoRequest){
+        PedidoDTO pedido = PedidoMapper.confirmarPedido(confirmarPedidoRequest);
+        confirmarPedidoInputPort.confirmar(pedido);
+        return ResponseEntity.ok("Pedido confirmado com sucesso!");
     };
 
     @DeleteMapping()
@@ -63,8 +71,9 @@ public class PedidoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<PedidoResponse> buscar(@PathVariable String id, UriComponentsBuilder uriComponentsBuilder){
-        var pedido = buscarPedidoInputPort.buscaPedido(id);
+        PedidoDTO pedidoDTO = new PedidoDTO();
+        pedidoDTO.setId(id);
+        var pedido = buscarPedidoInputPort.buscaPedido(pedidoDTO);
         return ResponseEntity.ok(pedido);
     }
-
 }
