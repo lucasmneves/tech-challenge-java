@@ -1,8 +1,10 @@
 package com.fiap.fiapburger.adapter.in.controller.mapper;
 
 import com.fiap.fiapburger.adapter.in.controller.request.AdicionarItensPedidoRequest;
+import com.fiap.fiapburger.adapter.in.controller.request.EfetuarPagamentoRequest;
 import com.fiap.fiapburger.adapter.in.controller.request.RemoverItensPedidoRequest;
 import com.fiap.fiapburger.adapter.in.controller.request.SalvarPedidoRequest;
+import com.fiap.fiapburger.adapter.in.controller.response.EfetuarPagamentoResponse;
 import com.fiap.fiapburger.adapter.in.controller.response.PagamentoResponse;
 import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
 import com.fiap.fiapburger.adapter.out.repository.entity.PagamentoEntity;
@@ -19,5 +21,5 @@ import java.util.List;
 public interface PagamentoMapper {
 
     List<PagamentoResponse> toListaPagamentoResponse(List<PagamentoEntity> pagamentoEntity);
-
+    EfetuarPagamentoResponse toEfetuarPagamentoResponse(EfetuarPagamentoRequest efetuarPagamentoRequest);
 }
