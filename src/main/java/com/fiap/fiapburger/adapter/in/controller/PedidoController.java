@@ -1,3 +1,4 @@
+/*
 package com.fiap.fiapburger.adapter.in.controller;
 
 import com.fiap.fiapburger.adapter.in.controller.mapper.PedidoMapper;
@@ -66,3 +67,4 @@ public class PedidoController {
     }
 
 }
+*/

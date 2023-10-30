@@ -1,3 +1,4 @@
+/*
 package com.fiap.fiapburger.adapter.in.controller.mapper;
 
 import com.fiap.fiapburger.adapter.in.controller.request.AdicionarItensPedidoRequest;
@@ -36,3 +37,4 @@ public interface PedidoMapper {
         return itensPedido;
     }
 }
+*/

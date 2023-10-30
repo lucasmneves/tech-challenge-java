@@ -31,5 +31,5 @@ public class ProdutoEntity implements Serializable {
 	private String url_imagem;
 	private BigDecimal preco;
 	private String categoria;
-		
+
 }
