@@ -23,7 +23,7 @@ public class PedidoEntity implements Serializable {
 
 	@Id
 	private String id;
-	private Long senha;
+	private Integer senha;
 	private String id_status;
 	private String cpf;
 	private String detalhes;

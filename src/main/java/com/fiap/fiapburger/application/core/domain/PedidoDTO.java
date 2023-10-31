@@ -11,7 +11,7 @@ public class PedidoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String id;
-    private Long senha;
+    private Integer senha;
     private String id_status;
     private String cpf;
     private String detalhes;
@@ -33,11 +33,11 @@ public class PedidoDTO implements Serializable {
         this.id = id;
     }
 
-    public Long getSenha() {
+    public Integer getSenha() {
         return senha;
     }
 
-    public void setSenha(Long senha) {
+    public void setSenha(Integer senha) {
         this.senha = senha;
     }
 
