@@ -25,7 +25,8 @@ public class ItensPedidoEntity implements Serializable {
 
 	@Id
 	private String id;
-	private String produto;
+
+	private ProdutoEntity produto;
 	private String pedido;
 
 }

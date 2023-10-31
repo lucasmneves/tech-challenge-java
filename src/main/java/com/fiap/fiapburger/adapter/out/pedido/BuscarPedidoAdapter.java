@@ -2,22 +2,21 @@
 package com.fiap.fiapburger.adapter.out.pedido;
 
 import com.fiap.fiapburger.adapter.in.controller.mapper.PedidoMapper;
+import com.fiap.fiapburger.adapter.in.controller.response.ItensPedidoResponse;
 import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
 import com.fiap.fiapburger.adapter.out.repository.ItensPedidoRepository;
 import com.fiap.fiapburger.adapter.out.repository.PedidoRepository;
 import com.fiap.fiapburger.adapter.out.repository.ProdutoRepository;
-import com.fiap.fiapburger.adapter.out.repository.entity.ItensPedidoEntity;
 import com.fiap.fiapburger.adapter.out.repository.entity.PedidoEntity;
-import com.fiap.fiapburger.adapter.out.repository.entity.ProdutoEntity;
 import com.fiap.fiapburger.application.core.domain.PedidoDTO;
-import com.fiap.fiapburger.application.core.exception.ClienteNaoEncontradoException;
 import com.fiap.fiapburger.application.core.exception.ExceptionsMessageEnum;
+import com.fiap.fiapburger.application.core.exception.PedidoNaoEncontradoException;
 import com.fiap.fiapburger.application.ports.out.pedido.BuscarPedidoOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class BuscarPedidoAdapter implements BuscarPedidoOutputPort {
@@ -39,19 +38,28 @@ public class BuscarPedidoAdapter implements BuscarPedidoOutputPort {
     public PedidoResponse buscar(PedidoDTO pedido) {
 
         PedidoResponse pedidoResponse = new PedidoResponse();
+        List<ItensPedidoResponse> listItensPedidoResponse = new ArrayList<ItensPedidoResponse>();
+        ItensPedidoResponse itensPedidoResponse = new ItensPedidoResponse();
 
-        Optional<PedidoEntity> pedidoEntity = pedidoRepository.findById(pedido.getId());
+        PedidoEntity pedidoEntity = pedidoRepository.findById(pedido.getId())
+                .orElseThrow(() -> new PedidoNaoEncontradoException(ExceptionsMessageEnum.PEDIDO_NAO_ENCONTRADO.value()));
 
-        if(pedidoEntity.isPresent()){
-            pedidoResponse = pedidoMapper.toPedidoResponse(pedidoEntity.get());
+        pedidoResponse = pedidoMapper.toPedidoResponse(pedidoEntity);
+
+        var itensPedido = itensPedidoRepository.findAllByPedido(pedido.getId());
+
+        /*
+        Optional<ProdutoEntity> produtoEntity = produtoRepository.findById(itensPedido.get(0).getProduto());
+        if(produtoEntity.isPresent()){
+            itensPedidoResponse.setNome(produtoEntity.get().getNome());
+            itensPedidoResponse.setValor(produtoEntity.get().getPreco());
+            listItensPedidoResponse.add(itensPedidoResponse);
+            pedidoResponse.setItensPedido(listItensPedidoResponse);
         }else{
-            throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.PEDIDO_NAO_ENCONTRADO.value());
-        }
-
+            throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.PRODUTO_NAO_ENCONTRADO.value());
+        }*/
         return pedidoResponse;
 
     }
-
-
 }
 

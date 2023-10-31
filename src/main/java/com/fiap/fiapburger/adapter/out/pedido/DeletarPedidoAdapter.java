@@ -36,7 +36,7 @@ public class DeletarPedidoAdapter implements DeletarPedidoOutputPort {
         if(itensPedido.isPresent()){
             itensPedidoRepository.deleteById(itensPedido.get().getId());
         }else{
-            throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.CLIENTE_NAO_ENCONTRADO.value());
+            throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.PEDIDO_NAO_ENCONTRADO.value());
         }
     }
 
@@ -49,7 +49,7 @@ public class DeletarPedidoAdapter implements DeletarPedidoOutputPort {
         if(produtoEntity.isPresent()){
             valor = produtoEntity.get().getPreco();
         }else{
-            throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.CLIENTE_NAO_ENCONTRADO.value());
+            throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.PRODUTO_NAO_ENCONTRADO.value());
         }
 
         Optional<PedidoEntity> pedidoEntity = pedidoRepository.findById(idPedido);
@@ -57,7 +57,7 @@ public class DeletarPedidoAdapter implements DeletarPedidoOutputPort {
             pedidoEntity.get().setValor_total(pedidoEntity.get().getValor_total().subtract(valor));
             pedidoRepository.save(pedidoEntity.get());
         }else{
-            throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.CLIENTE_NAO_ENCONTRADO.value());
+            throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.PEDIDO_NAO_ENCONTRADO.value());
         }
     }
 }
