@@ -3,9 +3,7 @@ package com.fiap.fiapburger.adapter.out.repository.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,7 +24,13 @@ public class ItensPedidoEntity implements Serializable {
 	@Id
 	private String id;
 
+	@ManyToOne
+	@JoinColumn(name = "produto")
 	private ProdutoEntity produto;
-	private String pedido;
+
+	@ManyToOne
+	@JoinColumn(name = "pedido")
+	private PedidoEntity pedido;
+
 
 }

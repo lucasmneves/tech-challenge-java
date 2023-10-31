@@ -13,6 +13,9 @@ public class ItensPedidoResponse implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("id_produto")
+    private String idProduto;
+
     @JsonProperty("valor")
     private BigDecimal valor;
 

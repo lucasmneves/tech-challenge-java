@@ -76,7 +76,7 @@ public class PedidoController {
         ItensPedidoDTO itensPedido = PedidoMapper.removerItensPedido(removerItensPedidoRequest);
         deletarPedidoInputPort.removerItens(removerItensPedidoRequest.getIdProduto(), removerItensPedidoRequest.getIdPedido());
         deletarPedidoInputPort.deletar(removerItensPedidoRequest.getIdProduto(), removerItensPedidoRequest.getIdPedido());
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok("Item do pedido deletado com sucesso!");
     }
 
     @GetMapping("/{id}")

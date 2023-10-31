@@ -46,18 +46,10 @@ public class BuscarPedidoAdapter implements BuscarPedidoOutputPort {
 
         pedidoResponse = pedidoMapper.toPedidoResponse(pedidoEntity);
 
-        var itensPedido = itensPedidoRepository.findAllByPedido(pedido.getId());
+        var itensPedido = itensPedidoRepository.buscarItensPedidoPorId(pedido.getId());
 
-        /*
-        Optional<ProdutoEntity> produtoEntity = produtoRepository.findById(itensPedido.get(0).getProduto());
-        if(produtoEntity.isPresent()){
-            itensPedidoResponse.setNome(produtoEntity.get().getNome());
-            itensPedidoResponse.setValor(produtoEntity.get().getPreco());
-            listItensPedidoResponse.add(itensPedidoResponse);
-            pedidoResponse.setItensPedido(listItensPedidoResponse);
-        }else{
-            throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.PRODUTO_NAO_ENCONTRADO.value());
-        }*/
+        pedidoResponse.setItensPedido(PedidoMapper.buscarItensPedidoResponse(itensPedido));
+
         return pedidoResponse;
 
     }

@@ -48,7 +48,7 @@ public class EditarPedidoAdapter implements EditarPedidoOutputPort {
 
         BigDecimal valor = new BigDecimal("0");
 
-        Optional<ProdutoEntity> produtoEntity = produtoRepository.findById(itensPedidoDTO.getProduto());
+        Optional<ProdutoEntity> produtoEntity = produtoRepository.findById(itensPedidoDTO.getProduto().getId());
         if(produtoEntity.isPresent()){
             valor = produtoEntity.get().getPreco();
         }else{
