@@ -10,7 +10,6 @@ import com.fiap.fiapburger.application.ports.in.pedido.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 
@@ -58,14 +57,14 @@ public class PedidoController {
         return ResponseEntity.ok("Pedido atualizado com sucesso!");
     };
 
-    @PatchMapping("/confirmar")
+    @PostMapping("/confirmar")
     public ResponseEntity<String> confirmarPedido(@Valid @RequestBody ConfirmarPedidoRequest confirmarPedidoRequest){
         PedidoDTO pedido = PedidoMapper.confirmarPedido(confirmarPedidoRequest);
         confirmarPedidoInputPort.confirmar(pedido);
         return ResponseEntity.ok("Pedido confirmado com sucesso!");
     };
 
-    @PatchMapping("/avaliar")
+    @PostMapping("/avaliar")
     public ResponseEntity<String> avaliarPedido(@Valid @RequestBody AvaliarPedidoRequest avaliarPedidoRequest){
         PedidoDTO pedido = PedidoMapper.avaliarPedido(avaliarPedidoRequest);
         avaliarPedidoInputPort.avaliar(pedido);

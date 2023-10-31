@@ -115,3 +115,17 @@ ALTER TABLE ONLY "public"."pedido" ADD CONSTRAINT "pedido_id_status_fkey" FOREIG
 ALTER TABLE ONLY "public"."produtos" ADD CONSTRAINT "produtos_id_categoria_fkey" FOREIGN KEY (id_categoria) REFERENCES categoria(id) NOT DEFERRABLE;
 
 -- 2023-10-31 04:12:04.359411+00
+INSERT INTO "satisfacao" ("id", "nome")
+VALUES ('0', 'Sem avaliacao'),  ('5', 'Otimo'),  ('4', 'Bom'), ('3', 'Regular'), ('2', 'Ruim'),  ('1', 'Pessimo');
+
+INSERT INTO "status" ("id", "descricao")
+VALUES ('1', 'Carrinho aberto'),  ('2', 'Carrinho confirmado'),  ('3', 'Pagamento efetuado'), ('4', 'Recebido'),  ('5', 'Em preparo'), ('6', 'Pronto'), ('7', 'Entregue ao cliente');
+
+INSERT INTO "pagamento" ("id", "nome")
+VALUES ('0', 'Pagamento nao selecionado'), ('1', 'Debito'),  ('2', 'Credito'),  ('3', 'Mercado pago');
+
+INSERT INTO "categoria" ("id", "nome", "descricao")
+VALUES ('1', 'Lanches', 'Lanches'), ('2', 'Bebida', 'Bebida'),  ('3', 'Acompanhamento', 'Acompanhamento'),  ('4', 'Sobremesa', 'Sobremesa');
+
+INSERT INTO "produtos" ("id", "nome", "descricao", "url_imagem", "preco", "categoria")
+VALUES ('07bc64c4-fc32-4d93-a569-65162b070575', 'Hamburguer', 'Pao, alface, molho, queijo', 'path/hamburguer.png', '10', '1'), ('48de37ee-a8aa-4455-baca-bc4a87205a5a', 'Coca-cola', 'Sem acucar', 'path/coca.png', '5', '2'), ('6123911a-167d-4951-ad30-90c6830e6eee', 'Batata frita', '', 'path/batata.png', '7', '3');

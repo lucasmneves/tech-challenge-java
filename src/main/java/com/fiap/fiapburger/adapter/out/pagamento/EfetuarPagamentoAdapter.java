@@ -37,6 +37,7 @@ public class EfetuarPagamentoAdapter implements EfetuarPagamentoOutputPort {
         Optional<PedidoEntity> pedidoEntity = pedidoRepository.findById(efetuarPagamentoResponse.getIdPedido());
         if(pedidoEntity.isPresent()){
             pedidoEntity.get().setId_status("3");
+            pedidoEntity.get().setId_pagamento("3");
             pedidoRepository.save(pedidoEntity.get());
         }else{
             throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.PEDIDO_NAO_ENCONTRADO.value());
