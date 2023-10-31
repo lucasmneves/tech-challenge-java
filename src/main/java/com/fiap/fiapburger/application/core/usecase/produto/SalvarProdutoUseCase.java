@@ -5,6 +5,8 @@ import com.fiap.fiapburger.application.core.domain.ProdutoDTO;
 import com.fiap.fiapburger.application.ports.in.produto.SalvarProdutoInputPort;
 import com.fiap.fiapburger.application.ports.out.produto.SalvarProdutoOutputPort;
 
+import java.util.UUID;
+
 public class SalvarProdutoUseCase implements SalvarProdutoInputPort {
 
     private final SalvarProdutoOutputPort outputPort;
@@ -15,6 +17,8 @@ public class SalvarProdutoUseCase implements SalvarProdutoInputPort {
 
     @Override
     public void salvar(ProdutoDTO produto) {
+        UUID id = UUID.randomUUID();
+        produto.setId(id.toString());
         outputPort.salvar(produto);
     }
 }

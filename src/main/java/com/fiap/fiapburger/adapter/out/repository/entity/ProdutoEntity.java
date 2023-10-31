@@ -24,7 +24,7 @@ public class ProdutoEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private UUID id;
+	private String id;
 	private String nome;
 	private String descricao;
 	private String url_imagem;
