@@ -1,11 +1,9 @@
 package com.fiap.fiapburger.adapter.in.controller;
 
 import com.fiap.fiapburger.adapter.in.controller.mapper.PedidoMapper;
-import com.fiap.fiapburger.adapter.in.controller.request.AdicionarItensPedidoRequest;
-import com.fiap.fiapburger.adapter.in.controller.request.ConfirmarPedidoRequest;
-import com.fiap.fiapburger.adapter.in.controller.request.RemoverItensPedidoRequest;
-import com.fiap.fiapburger.adapter.in.controller.request.SalvarPedidoRequest;
+import com.fiap.fiapburger.adapter.in.controller.request.*;
 import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
+import com.fiap.fiapburger.adapter.in.controller.response.SalvarPedidoResponse;
 import com.fiap.fiapburger.application.core.domain.ItensPedidoDTO;
 import com.fiap.fiapburger.application.core.domain.PedidoDTO;
 import com.fiap.fiapburger.application.ports.in.pedido.*;
@@ -36,13 +34,19 @@ public class PedidoController {
     private ConfirmarPedidoInputPort confirmarPedidoInputPort;
 
     @Autowired
+    private AvaliarPedidoInputPort avaliarPedidoInputPort;
+
+    @Autowired
     private PedidoMapper pedidoMapper;
 
     @PostMapping
-    public ResponseEntity<String> salvar(@Valid @RequestBody SalvarPedidoRequest salvarPedidoRequest,  UriComponentsBuilder uriComponentsBuilder){
+    @ResponseBody
+    public ResponseEntity<SalvarPedidoResponse> salvar(@Valid @RequestBody SalvarPedidoRequest salvarPedidoRequest){
         var pedido = pedidoMapper.toPedido(salvarPedidoRequest);
         salvarPedidoInputPort.salvar(pedido);
-        return ResponseEntity.created(uriComponentsBuilder.path("/pedido/{id}").buildAndExpand(pedido.getId()).toUri()).build();
+        SalvarPedidoResponse response = new SalvarPedidoResponse();
+        response.setId(pedido.getId());
+        return ResponseEntity.ok(response);
     }
 
     @PatchMapping
@@ -55,10 +59,17 @@ public class PedidoController {
     };
 
     @PatchMapping("/confirmar")
-    public ResponseEntity<String> confirmarCarrinho(@Valid @RequestBody ConfirmarPedidoRequest confirmarPedidoRequest){
+    public ResponseEntity<String> confirmarPedido(@Valid @RequestBody ConfirmarPedidoRequest confirmarPedidoRequest){
         PedidoDTO pedido = PedidoMapper.confirmarPedido(confirmarPedidoRequest);
         confirmarPedidoInputPort.confirmar(pedido);
         return ResponseEntity.ok("Pedido confirmado com sucesso!");
+    };
+
+    @PatchMapping("/avaliar")
+    public ResponseEntity<String> avaliarPedido(@Valid @RequestBody AvaliarPedidoRequest avaliarPedidoRequest){
+        PedidoDTO pedido = PedidoMapper.avaliarPedido(avaliarPedidoRequest);
+        avaliarPedidoInputPort.avaliar(pedido);
+        return ResponseEntity.ok("Pedido avaliado com sucesso!");
     };
 
     @DeleteMapping()
@@ -70,10 +81,11 @@ public class PedidoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PedidoResponse> buscar(@PathVariable String id, UriComponentsBuilder uriComponentsBuilder){
+    public ResponseEntity<PedidoResponse> buscar(@PathVariable String id){
         PedidoDTO pedidoDTO = new PedidoDTO();
         pedidoDTO.setId(id);
         var pedido = buscarPedidoInputPort.buscaPedido(pedidoDTO);
         return ResponseEntity.ok(pedido);
     }
+
 }

@@ -61,10 +61,9 @@ CREATE TABLE "public"."pedido" (
     CONSTRAINT "pedido_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
-CREATE SEQUENCE produto_senha_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
 
 CREATE TABLE "public"."produtos" (
-    "id" character(36) DEFAULT 'nextval(''pedido_senha_seq'')' NOT NULL,
+    "id" character(36) NOT NULL,
     "nome" character(80) NOT NULL,
     "descricao" character(127) NOT NULL,
     "url_imagem" character(200) NOT NULL,
@@ -107,7 +106,7 @@ INSERT INTO "satisfacao" ("id", "nome")
 VALUES ('0', 'Sem avaliacao'),  ('5', 'Otimo'),  ('4', 'Bom'), ('3', 'Regular'), ('2', 'Ruim'),  ('1', 'Pessimo');
 
 INSERT INTO "status" ("id", "descricao")
-VALUES ('1', 'Carrinho aberto'),  ('2', 'Carrinho confirmado'),  ('3', 'Pagamento efetuado'), ('4', 'Recebido'),  ('5', 'Em preparo'), ('6', 'Pronto'), ('7', 'Entregue ao cliente');
+VALUES ('1', 'Aberto'),  ('2', 'Confirmado'),  ('3', 'Pagamento efetuado'), ('4', 'Recebido'),  ('5', 'Em preparo'), ('6', 'Pronto'), ('7', 'Entregue ao cliente');
 
 INSERT INTO "pagamento" ("id", "nome")
 VALUES ('0', 'Pagamento nao selecionado'), ('1', 'Debito'),  ('2', 'Credito'),  ('3', 'Mercado pago');
@@ -118,5 +117,3 @@ VALUES ('1', 'Lanches', 'Lanches'), ('2', 'Bebida', 'Bebida'),  ('3', 'Acompanha
 INSERT INTO "produtos" ("id", "nome", "descricao", "url_imagem", "preco", "categoria")
 VALUES ('1', 'Hamburguer', 'Pao, alface, molho, queijo', 'path/hamburguer.png', '10', '1'), ('2', 'Coca-cola', 'Sem acucar', 'path/coca.png', '5', '2'), ('3', 'Batata frita', '', 'path/batata.png', '7', '3');
 
-INSERT INTO "pedido" ("id", "senha", "id_status", "cpf", "detalhes", "valor_total", "data_hora_inicio", "data_hora_fim", "id_pagamento", "id_satisfacao")
-VALUES ('1', nextval('pedido_senha_seq'), '1', NULL, NULL, '0', 'Saturday, 28 October 2023 05:27:20', NULL, NULL, NULL);

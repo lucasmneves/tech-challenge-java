@@ -23,9 +23,7 @@ public class SalvarPedidoUseCase implements SalvarPedidoInputPort {
         Date date = new Date(System.currentTimeMillis());
 
         UUID id = UUID.randomUUID();
-
         pedido.setId(id.toString());
-        pedido.setSenha(1L);
         pedido.setId_status("1");
         BigDecimal valor = new BigDecimal("0");
         pedido.setValor_total(valor);
