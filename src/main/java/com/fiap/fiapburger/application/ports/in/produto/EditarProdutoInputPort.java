@@ -1,4 +1,4 @@
-package com.fiap.fiapburger.application.ports.in;
+package com.fiap.fiapburger.application.ports.in.produto;
 
 import com.fiap.fiapburger.application.core.domain.ProdutoDTO;
 

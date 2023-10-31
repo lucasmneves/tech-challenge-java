@@ -6,18 +6,28 @@ import java.util.Date;
 import java.util.UUID;
 
 public class ProdutoDTO implements Serializable {
-
     private static final long serialVersionUID = 1L;
-
     private String id;
     private String nome;
     private String descricao;
     private String url_imagem;
     private BigDecimal preco;
-    private String categoria;
+    private String id_categoria;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public String getUrl_imagem() {
+        return url_imagem;
+    }
+
+    public void setUrl_imagem(String url_imagem) {
+        this.url_imagem = url_imagem;
+    }
+
+    public String getId_categoria() {
+        return id_categoria;
+    }
+
+    public void setId_categoria(String id_categoria) {
+        this.id_categoria = id_categoria;
     }
 
     public String getId() {
@@ -44,14 +54,6 @@ public class ProdutoDTO implements Serializable {
         this.descricao = descricao;
     }
 
-    public String getUrl_imagem() {
-        return url_imagem;
-    }
-
-    public void setUrl_imagem(String url_imagem) {
-        this.url_imagem = url_imagem;
-    }
-
     public BigDecimal getPreco() {
         return preco;
     }
@@ -60,11 +62,4 @@ public class ProdutoDTO implements Serializable {
         this.preco = preco;
     }
 
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
 }

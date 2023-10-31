@@ -1,4 +1,4 @@
-package com.fiap.fiapburger.adapter.out;
+package com.fiap.fiapburger.adapter.out.produto;
 
 import com.fiap.fiapburger.adapter.out.repository.ProdutoRepository;
 import com.fiap.fiapburger.adapter.out.repository.entity.ProdutoEntity;
@@ -19,9 +19,9 @@ public class SalvarProdutoAdapter implements SalvarProdutoOutputPort {
     private ProdutoEntityMapper produtoEntityMapper;
 
     @Override
-    public ProdutoDTO salvar(ProdutoDTO produto) {
+    public void salvar(ProdutoDTO produto) {
         ProdutoEntity produtoEntity = produtoEntityMapper.toProdutoEntity(produto);
         ProdutoEntity savedEntity = produtoRepository.save(produtoEntity);
-        return produtoEntityMapper.toProdutoDTO(savedEntity);
+        //return produtoEntityMapper.toProdutoDTO(savedEntity);
     }
 }

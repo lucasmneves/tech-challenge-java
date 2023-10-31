@@ -4,14 +4,18 @@ import com.fiap.fiapburger.adapter.in.controller.request.ProdutoRequest;
 import com.fiap.fiapburger.adapter.in.controller.response.ProdutoResponse;
 import com.fiap.fiapburger.adapter.in.controller.mapper.ProdutoMapper;
 import com.fiap.fiapburger.application.core.domain.ProdutoDTO;
-import com.fiap.fiapburger.application.ports.in.BuscarProdutoInputPort;
 
-import com.fiap.fiapburger.application.ports.in.EditarProdutoInputPort;
-import com.fiap.fiapburger.application.ports.in.SalvarProdutoInputPort;
+
+import com.fiap.fiapburger.application.ports.in.produto.BuscarProdutoInputPort;
 import com.fiap.fiapburger.application.ports.in.produto.DeletarProdutoInputPort;
+import com.fiap.fiapburger.application.ports.in.produto.EditarProdutoInputPort;
+import com.fiap.fiapburger.application.ports.in.produto.SalvarProdutoInputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.net.URI;
 
 
 @RestController
@@ -40,11 +44,10 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<ProdutoResponse> salvarProduto(@RequestBody ProdutoRequest produtoRequest) {
+    public ResponseEntity<ProdutoResponse> salvarProduto(@RequestBody ProdutoRequest produtoRequest, UriComponentsBuilder uriComponentsBuilder){
         ProdutoDTO produtoDTO = produtoMapper.toProdutoDTO(produtoRequest);
-        ProdutoDTO savedProdutoDTO = salvarProdutoInputPort.salvar(produtoDTO);
-        ProdutoResponse produtoResponse = produtoMapper.toProdutoResponse(savedProdutoDTO);
-        return ResponseEntity.ok(produtoResponse);
+        salvarProdutoInputPort.salvar(produtoDTO);
+        return ResponseEntity.created(uriComponentsBuilder.path("/produto/{id}").buildAndExpand(produtoDTO.getId_categoria()).toUri()).build();
     }
 
     @GetMapping("/{id}")

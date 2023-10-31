@@ -3,9 +3,7 @@ package com.fiap.fiapburger.adapter.out.repository.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,13 +21,14 @@ import java.util.UUID;
 public class ProdutoEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 	@Id
-	private String id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private UUID id;
 	private String nome;
 	private String descricao;
 	private String url_imagem;
 	private BigDecimal preco;
-	private String categoria;
+	private String id_categoria;
 
 }
