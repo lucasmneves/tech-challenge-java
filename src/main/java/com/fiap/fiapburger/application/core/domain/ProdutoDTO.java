@@ -1,33 +1,29 @@
 package com.fiap.fiapburger.application.core.domain;
 
+import java.math.BigDecimal;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.UUID;
+import java.util.List;
+public class ProdutoDTO {
 
-public class ProdutoDTO implements Serializable {
-    private static final long serialVersionUID = 1L;
     private String id;
     private String nome;
     private String descricao;
-    private String url_imagem;
+    private String urlImagem;
     private BigDecimal preco;
-    private String id_categoria;
+    private CategoriaDTO categoria;
 
-    public String getUrl_imagem() {
-        return url_imagem;
-    }
+    public ProdutoDTO() {}
 
-    public void setUrl_imagem(String url_imagem) {
-        this.url_imagem = url_imagem;
-    }
-
-    public String getId_categoria() {
-        return id_categoria;
-    }
-
-    public void setId_categoria(String id_categoria) {
-        this.id_categoria = id_categoria;
+    public ProdutoDTO(String id, String nome, String descricao, String urlImagem, BigDecimal preco, CategoriaDTO categoria) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.urlImagem = urlImagem;
+        this.preco = preco;
+        this.categoria = categoria;
     }
 
     public String getId() {
@@ -54,6 +50,14 @@ public class ProdutoDTO implements Serializable {
         this.descricao = descricao;
     }
 
+    public String getUrlImagem() {
+        return urlImagem;
+    }
+
+    public void setUrlImagem(String urlImagem) {
+        this.urlImagem = urlImagem;
+    }
+
     public BigDecimal getPreco() {
         return preco;
     }
@@ -62,4 +66,11 @@ public class ProdutoDTO implements Serializable {
         this.preco = preco;
     }
 
+    public CategoriaDTO getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaDTO categoria) {
+        this.categoria = categoria;
+    }
 }
