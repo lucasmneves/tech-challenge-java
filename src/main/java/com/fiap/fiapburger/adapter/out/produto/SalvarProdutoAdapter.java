@@ -22,6 +22,5 @@ public class SalvarProdutoAdapter implements SalvarProdutoOutputPort {
     public void salvar(ProdutoDTO produto) {
         ProdutoEntity produtoEntity = produtoEntityMapper.toProdutoEntity(produto);
         ProdutoEntity savedEntity = produtoRepository.save(produtoEntity);
-        //return produtoEntityMapper.toProdutoDTO(savedEntity);
     }
 }

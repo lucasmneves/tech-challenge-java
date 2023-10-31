@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 public class ProdutoResponse {
 
     @JsonProperty("id")
-    private Long id;
+    private String id;
 
     @JsonProperty("nome")
     private String nome;
@@ -18,17 +18,17 @@ public class ProdutoResponse {
     public ProdutoResponse() {
     }
 
-    public ProdutoResponse(Long id, String nome, BigDecimal preco) {
+    public ProdutoResponse(String id, String nome, BigDecimal preco) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

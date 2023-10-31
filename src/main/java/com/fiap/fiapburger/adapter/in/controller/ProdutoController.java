@@ -47,7 +47,7 @@ public class ProdutoController {
     public ResponseEntity<ProdutoResponse> salvarProduto(@RequestBody ProdutoRequest produtoRequest, UriComponentsBuilder uriComponentsBuilder){
         ProdutoDTO produtoDTO = produtoMapper.toProdutoDTO(produtoRequest);
         salvarProdutoInputPort.salvar(produtoDTO);
-        return ResponseEntity.created(uriComponentsBuilder.path("/produto/{id}").buildAndExpand(produtoDTO.getId_categoria()).toUri()).build();
+        return ResponseEntity.created(uriComponentsBuilder.path("/produtos/{id}").buildAndExpand(produtoDTO.getId()).toUri()).build();
     }
 
     @GetMapping("/{id}")

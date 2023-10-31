@@ -32,5 +32,4 @@ public class ItensPedidoEntity implements Serializable {
 	@JoinColumn(name = "pedido")
 	private PedidoEntity pedido;
 
-
 }

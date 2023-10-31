@@ -45,11 +45,9 @@ CREATE TABLE "public"."pagamento" (
     CONSTRAINT "pagamento_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
-CREATE SEQUENCE pedido_senha_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
-
 CREATE TABLE "public"."pedido" (
     "id" character(36)  NOT NULL,
-    "senha" character(10) DEFAULT 'nextval(''pedido_senha_seq'')',
+    "senha" character(10) NOT NULL,
     "id_status" character(1) NOT NULL,
     "cpf" character(11),
     "detalhes" character(255),
@@ -61,10 +59,8 @@ CREATE TABLE "public"."pedido" (
     CONSTRAINT "pedido_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
-CREATE SEQUENCE produto_senha_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
-
 CREATE TABLE "public"."produtos" (
-    "id" character(36) DEFAULT 'nextval(''pedido_senha_seq'')' NOT NULL,
+    "id" character(36) NOT NULL,
     "nome" character(80) NOT NULL,
     "descricao" character(127) NOT NULL,
     "url_imagem" character(200) NOT NULL,
@@ -117,6 +113,3 @@ VALUES ('1', 'Lanches', 'Lanches'), ('2', 'Bebida', 'Bebida'),  ('3', 'Acompanha
 
 INSERT INTO "produtos" ("id", "nome", "descricao", "url_imagem", "preco", "id_categoria")
 VALUES ('48de37ee-a8aa-4455-baca-bc4a87205a5a', 'Hamburguer', 'Pao, alface, molho, queijo', 'path/hamburguer.png', '10', '1'), ('58de37ee-1233-4455-baca-bc4a87205a23', 'Coca-cola', 'Sem acucar', 'path/coca.png', '5', '2'), ('29de37ee-1233-4455-baca-bc4a87205a44', 'Batata frita', '', 'path/batata.png', '7', '3');
-
-INSERT INTO "pedido" ("id", "senha", "id_status", "cpf", "detalhes", "valor_total", "data_hora_inicio", "data_hora_fim", "id_pagamento", "id_satisfacao")
-VALUES ('1', nextval('pedido_senha_seq'), '1', NULL, NULL, '0', 'Saturday, 28 October 2023 05:27:20', NULL, NULL, NULL);

@@ -17,6 +17,7 @@ public class EditarProdutoUseCase implements EditarProdutoInputPort {
 
     @Override
     public ProdutoDTO editar(String id, ProdutoDTO produtoDTO) {
+        produtoDTO.setId(id);
         return editarProdutoOutputPort.editar(id, produtoDTO);
     }
 }
