@@ -2,19 +2,19 @@ package com.fiap.fiapburger.adapter.in.controller;
 
 import com.fiap.fiapburger.adapter.in.controller.mapper.PedidoMapper;
 import com.fiap.fiapburger.adapter.in.controller.request.AdicionarItensPedidoRequest;
+import com.fiap.fiapburger.adapter.in.controller.request.AtualizarStatusPedidoRequest;
 import com.fiap.fiapburger.adapter.in.controller.request.RemoverItensPedidoRequest;
 import com.fiap.fiapburger.adapter.in.controller.request.SalvarPedidoRequest;
 import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
-import com.fiap.fiapburger.adapter.out.repository.entity.PedidoEntity;
 import com.fiap.fiapburger.application.core.domain.ItensPedidoDTO;
 import com.fiap.fiapburger.application.core.domain.PedidoDTO;
-import com.fiap.fiapburger.application.ports.in.*;
+import com.fiap.fiapburger.application.ports.in.pedido.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/pedido")
@@ -31,6 +31,9 @@ public class PedidoController {
 
     @Autowired
     private DeletarPedidoInputPort deletarPedidoInputPort;
+
+    @Autowired
+    private ListarPedidosInputPort listarPedidosInputPort;
 
     @Autowired
     private PedidoMapper pedidoMapper;
@@ -64,5 +67,23 @@ public class PedidoController {
         var pedido = buscarPedidoInputPort.buscaPedido(id);
         return ResponseEntity.ok(pedido);
     }
+
+    @GetMapping("todos")
+    public ResponseEntity<List<PedidoResponse>> listaPedidos(){
+        var pedidos = listarPedidosInputPort.listaPedidos();
+        return ResponseEntity.ok(pedidos);
+    }
+
+    @GetMapping("todos/{id_status}")
+    public ResponseEntity<List<PedidoResponse>> listaPedidosPorStatus(@PathVariable String id_status){
+        var pedidos = listarPedidosInputPort.listaPedidosPorStatus(id_status);
+        return ResponseEntity.ok(pedidos);
+    }
+
+    @PatchMapping("/atualizar-status")
+    public ResponseEntity<String> atualizarStatusPedido(@Valid @RequestBody AtualizarStatusPedidoRequest atualizarStatusPedidoRequest){
+        editarPedidoInputPort.atualizarStatusPedido(PedidoMapper.atualizarStatusPedido(atualizarStatusPedidoRequest));
+        return ResponseEntity.ok("Status do pedido atualizado com sucesso!");
+    };
 
 }

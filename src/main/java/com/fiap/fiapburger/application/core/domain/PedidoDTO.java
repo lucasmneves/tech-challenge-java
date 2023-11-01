@@ -2,9 +2,7 @@ package com.fiap.fiapburger.application.core.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class PedidoDTO implements Serializable {
 
