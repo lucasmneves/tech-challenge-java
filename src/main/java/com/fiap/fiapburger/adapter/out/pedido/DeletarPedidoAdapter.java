@@ -5,6 +5,7 @@ import com.fiap.fiapburger.adapter.out.repository.ClienteRepository;
 import com.fiap.fiapburger.adapter.out.repository.ItensPedidoRepository;
 import com.fiap.fiapburger.adapter.out.repository.PedidoRepository;
 import com.fiap.fiapburger.adapter.out.repository.ProdutoRepository;
+import com.fiap.fiapburger.adapter.out.repository.entity.ItensPedidoEntity;
 import com.fiap.fiapburger.adapter.out.repository.entity.PedidoEntity;
 import com.fiap.fiapburger.adapter.out.repository.entity.ProdutoEntity;
 import com.fiap.fiapburger.application.core.domain.ItensPedidoDTO;
@@ -16,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -33,8 +36,8 @@ public class DeletarPedidoAdapter implements DeletarPedidoOutputPort {
     @Override
     public void removerItens(String idProduto, String idPedido) {
         var itensPedido = itensPedidoRepository.buscarProdutoEPedido(idProduto, idPedido);
-        if(itensPedido.isPresent()){
-            itensPedidoRepository.deleteById(itensPedido.get().getId());
+        if(!itensPedido.isEmpty()){
+            itensPedidoRepository.deleteById(itensPedido.get(0).getId());
         }else{
             throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.PEDIDO_NAO_ENCONTRADO.value());
         }

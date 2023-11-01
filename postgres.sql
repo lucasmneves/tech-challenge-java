@@ -3,17 +3,17 @@
 CREATE SEQUENCE "Categoria_id_seq" INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
 
 CREATE TABLE "public"."categoria" (
-    "id" character(1) DEFAULT 'nextval(''"Categoria_id_seq"'')' NOT NULL,
-    "nome" character(80) NOT NULL,
-    "descricao" character(127) NOT NULL,
+    "id" VARCHAR(1) DEFAULT 'nextval(''"Categoria_id_seq"'')' NOT NULL,
+    "nome" VARCHAR(80) NOT NULL,
+    "descricao" VARCHAR(127) NOT NULL,
     CONSTRAINT "Categoria_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
 
 CREATE TABLE "public"."cliente" (
-    "nome" character(80) NOT NULL,
-    "email" character(50) NOT NULL,
-    "cpf" character(11) NOT NULL,
+    "nome" VARCHAR(80) NOT NULL,
+    "email" VARCHAR(50) NOT NULL,
+    "cpf" VARCHAR(11) NOT NULL,
     CONSTRAINT "cliente_cpf" PRIMARY KEY ("cpf")
 ) WITH (oids = false);
 
@@ -22,8 +22,8 @@ CREATE SEQUENCE historico_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACH
 
 CREATE TABLE "public"."historico" (
     "id" integer DEFAULT nextval('historico_id_seq') NOT NULL,
-    "id_pedido" character(36) NOT NULL,
-    "id_status" character(5) NOT NULL,
+    "id_pedido" VARCHAR(36) NOT NULL,
+    "id_status" VARCHAR(5) NOT NULL,
     "data_hora" timestamp NOT NULL,
     CONSTRAINT "historico_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
@@ -32,54 +32,54 @@ CREATE TABLE "public"."historico" (
 CREATE SEQUENCE itens_pedido_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
 
 CREATE TABLE "public"."itens_pedido" (
-    "id" character(36)  NOT NULL,
-    "produto" character(36) NOT NULL,
-    "pedido" character(36) NOT NULL,
+    "id" VARCHAR(36)  NOT NULL,
+    "produto" VARCHAR(36) NOT NULL,
+    "pedido" VARCHAR(36) NOT NULL,
     CONSTRAINT "itens_pedido_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
 
 CREATE TABLE "public"."pagamento" (
-    "id" character(1) NOT NULL,
-    "nome" character(50) NOT NULL,
+    "id" VARCHAR(1) NOT NULL,
+    "nome" VARCHAR(50) NOT NULL,
     CONSTRAINT "pagamento_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
 CREATE TABLE "public"."pedido" (
-    "id" character(36)  NOT NULL,
-    "senha" character(10) NOT NULL,
-    "id_status" character(1) NOT NULL,
-    "cpf" character(11),
-    "detalhes" character(255),
+    "id" VARCHAR(36)  NOT NULL,
+    "senha" VARCHAR(10) NOT NULL,
+    "id_status" VARCHAR(1) NOT NULL,
+    "cpf" VARCHAR(11),
+    "detalhes" VARCHAR(255),
     "valor_total" money NOT NULL,
     "data_hora_inicio" timestamp NOT NULL,
     "data_hora_fim" timestamp,
-    "id_pagamento" character(1),
-    "id_satisfacao" character(1),
+    "id_pagamento" VARCHAR(1),
+    "id_satisfacao" VARCHAR(1),
     CONSTRAINT "pedido_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
 CREATE TABLE "public"."produtos" (
-    "id" character(36) NOT NULL,
-    "nome" character(80) NOT NULL,
-    "descricao" character(127) NOT NULL,
-    "url_imagem" character(200) NOT NULL,
+    "id" VARCHAR(36) NOT NULL,
+    "nome" VARCHAR(80) NOT NULL,
+    "descricao" VARCHAR(127) NOT NULL,
+    "url_imagem" VARCHAR(200) NOT NULL,
     "preco" money NOT NULL,
-    "id_categoria" character(36) NOT NULL,
+    "id_categoria" VARCHAR(36) NOT NULL,
     CONSTRAINT "produtos_id" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
 
 CREATE TABLE "public"."satisfacao" (
-    "id" character(1)  NOT NULL,
-    "nome" character(50) NOT NULL,
+    "id" VARCHAR(1)  NOT NULL,
+    "nome" VARCHAR(50) NOT NULL,
     CONSTRAINT "satisfacao_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
 
 CREATE TABLE "public"."status" (
-    "id" character(1)  NOT NULL,
-    "descricao" character(255) NOT NULL,
+    "id" VARCHAR(1)  NOT NULL,
+    "descricao" VARCHAR(255) NOT NULL,
     CONSTRAINT "status_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
