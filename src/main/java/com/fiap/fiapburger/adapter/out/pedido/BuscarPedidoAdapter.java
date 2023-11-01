@@ -50,6 +50,30 @@ public class BuscarPedidoAdapter implements BuscarPedidoOutputPort {
 
         pedidoResponse.setItensPedido(PedidoMapper.buscarItensPedidoResponse(itensPedido));
 
+        switch (pedidoResponse.getId_status()) {
+            case "1":
+                pedidoResponse.setId_status(StatusPedidoEnum.PEDIDO_ABERTO.value());
+                break;
+            case "2":
+                pedidoResponse.setId_status(StatusPedidoEnum.PEDIDO_CONFIRMADO.value());
+                break;
+            case "3":
+                pedidoResponse.setId_status(StatusPedidoEnum.PAGAMENTO_EFETUADO.value());
+                break;
+            case "4":
+                pedidoResponse.setId_status(StatusPedidoEnum.PEDIDO_RECEBIDO.value());
+                break;
+            case "5":
+                pedidoResponse.setId_status(StatusPedidoEnum.PEDIDO_EM_PREPARO.value());
+                break;
+            case "6":
+                pedidoResponse.setId_status(StatusPedidoEnum.PEDIDO_PRONTO.value());
+                break;
+            case "7":
+                pedidoResponse.setId_status(StatusPedidoEnum.PEDIDO_ENTREGUE.value());
+                break;
+        }
+
         return pedidoResponse;
 
     }
