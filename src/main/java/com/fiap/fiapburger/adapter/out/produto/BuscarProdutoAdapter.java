@@ -25,6 +25,7 @@ public class BuscarProdutoAdapter implements BuscarProdutoOutputPort {
     @Override
     public ProdutoDTO buscar(String id) {
         Optional<ProdutoEntity> produtoEntity = produtoRepository.findById(id);
+
         return produtoEntity.map(produtoMapper::toProdutoDTO).orElse(null);
     }
 }

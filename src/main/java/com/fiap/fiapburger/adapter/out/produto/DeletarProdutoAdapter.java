@@ -2,6 +2,8 @@ package com.fiap.fiapburger.adapter.out.produto;
 
 import com.fiap.fiapburger.adapter.out.repository.ProdutoRepository;
 
+import com.fiap.fiapburger.application.core.exception.ExceptionsMessageEnum;
+import com.fiap.fiapburger.application.core.exception.ProdutoNaoEncontradoException;
 import com.fiap.fiapburger.application.ports.out.produto.DeletarProdutoOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,6 +16,8 @@ public class DeletarProdutoAdapter implements DeletarProdutoOutputPort {
 
     @Override
     public void deletar(String id) {
-        produtoRepository.deleteById(id);
+        var produto  = produtoRepository.findById(id).orElseThrow(()-> new ProdutoNaoEncontradoException(ExceptionsMessageEnum.PRODUTO_NAO_ENCONTRADO.value()));
+        produtoRepository.delete(produto);
+
     }
 }

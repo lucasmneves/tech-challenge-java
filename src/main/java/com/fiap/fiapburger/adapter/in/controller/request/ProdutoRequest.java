@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ProdutoRequest {
 
-    public ProdutoRequest(String nome, BigDecimal preco) {
+    public ProdutoRequest(String nome, String preco) {
         this.nome = nome;
         this.preco = preco;
     }
@@ -22,7 +22,7 @@ public class ProdutoRequest {
 
     @NotNull(message = "Preço não pode ser nulo.")
     @JsonProperty("preco")
-    private BigDecimal preco;
+    private String preco;
 
     @JsonProperty("descricao")
     private String descricao;

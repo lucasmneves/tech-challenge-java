@@ -47,12 +47,13 @@ public class EditarPedidoAdapter implements EditarPedidoOutputPort {
 
     @Override
     public void editar(PedidoDTO pedido, ItensPedidoDTO itensPedidoDTO) {
-
+        String valorStr;
         BigDecimal valor = new BigDecimal("0");
 
         Optional<ProdutoEntity> produtoEntity = produtoRepository.findById(itensPedidoDTO.getProduto().getId());
         if(produtoEntity.isPresent()){
-            valor = produtoEntity.get().getPreco();
+            valorStr = produtoEntity.get().getPreco().replace(",", "");
+            valor = BigDecimal.valueOf(Double.parseDouble(valorStr));
         }else{
             throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.PRODUTO_NAO_ENCONTRADO.value());
         }

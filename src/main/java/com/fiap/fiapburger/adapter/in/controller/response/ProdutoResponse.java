@@ -14,6 +14,14 @@ public class ProdutoResponse {
     @JsonProperty("preco")
     private BigDecimal preco;
 
+    @JsonProperty("descricao")
+    private String descricao;
+
+    @JsonProperty("url_imagem")
+    private String urlImagem;
+
+    @JsonProperty("categoria")
+    private String categoria;
 
     public ProdutoResponse() {
     }
@@ -22,6 +30,14 @@ public class ProdutoResponse {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
+    }
+
+    public ProdutoResponse(String id, String nome, String categoria, String descricao, String preco) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.preco = BigDecimal.valueOf(Double.parseDouble(preco.replace(",","")));
+        this.categoria = categoria;
     }
 
     public String getId() {
@@ -46,5 +62,29 @@ public class ProdutoResponse {
 
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getUrlImagem() {
+        return urlImagem;
+    }
+
+    public void setUrlImagem(String urlImagem) {
+        this.urlImagem = urlImagem;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

@@ -4,13 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.UUID;
 
 @Entity
 @Table(name="produtos")
@@ -18,6 +17,8 @@ import java.util.UUID;
 @JsonInclude(Include.NON_NULL)
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProdutoEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -26,7 +27,7 @@ public class ProdutoEntity implements Serializable {
 	private String nome;
 	private String descricao;
 	private String url_imagem;
-	private BigDecimal preco;
+	private String preco;
 	private String id_categoria;
 
 }
