@@ -8,6 +8,8 @@ import com.fiap.fiapburger.application.ports.out.pagamento.ListarMeioPagamentoOu
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -20,13 +22,12 @@ public class ListarMeioPagamentoAdapter implements ListarMeioPagamentoOutputPort
     PagamentoMapper pagamentoMapper;
 
     @Override
-    public PagamentoResponse listaMeio() {
+    public List<PagamentoResponse> listaMeio() {
 
-        Optional<PagamentoEntity> pagamento = pagamentoRepository.findById("1");
-
-        return pagamentoMapper.toListaPagamentoResponse(pagamento.get());
+        List<PagamentoEntity> pagamento = pagamentoRepository.findAll();
+        pagamento.remove(0);
+        return pagamentoMapper.toListaPagamentoResponse(pagamento);
 
     }
-
 
 }

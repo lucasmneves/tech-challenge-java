@@ -3,6 +3,16 @@ version: '15.4'
 
 services:
 
+  fiap-burger:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tech-challenge-java
+    ports:
+      - "8989:8989"
+    depends_on:
+      - postgres
+
   postgres:
     image: postgres
     container_name: meu-postgres

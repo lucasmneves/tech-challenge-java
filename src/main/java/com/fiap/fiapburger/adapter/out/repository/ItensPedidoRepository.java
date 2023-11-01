@@ -10,5 +10,9 @@ import java.util.Optional;
 
 @Repository
 public interface ItensPedidoRepository extends JpaRepository<ItensPedidoEntity, String>{
-    Optional<ItensPedidoEntity> findByProdutoAndPedido(String produto, String pedido);
+    @Query("From ItensPedidoEntity i where produto.id = :produto and pedido.id = :pedido")
+    List<ItensPedidoEntity> buscarProdutoEPedido(String produto, String pedido);
+
+    @Query("From ItensPedidoEntity where pedido.id = :pedido")
+    List<ItensPedidoEntity> buscarItensPedidoPorId(String pedido);
 }

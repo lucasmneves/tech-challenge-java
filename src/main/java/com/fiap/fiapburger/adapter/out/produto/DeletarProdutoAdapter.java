@@ -1,7 +1,8 @@
-package com.fiap.fiapburger.adapter.out;
+package com.fiap.fiapburger.adapter.out.produto;
 
 import com.fiap.fiapburger.adapter.out.repository.ProdutoRepository;
-import com.fiap.fiapburger.application.ports.out.DeletarProdutoOutputPort;
+
+import com.fiap.fiapburger.application.ports.out.produto.DeletarProdutoOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,7 @@ public class DeletarProdutoAdapter implements DeletarProdutoOutputPort {
     private ProdutoRepository produtoRepository;
 
     @Override
-    public void deletar(Long id) {
+    public void deletar(String id) {
         produtoRepository.deleteById(id);
     }
 }

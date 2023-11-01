@@ -1,7 +1,9 @@
-package com.fiap.fiapburger.config;
+package com.fiap.fiapburger.config.produto;
 
-import com.fiap.fiapburger.adapter.out.DeletarProdutoAdapter;
-import com.fiap.fiapburger.application.core.usecase.DeletarProdutoUseCase;
+
+
+import com.fiap.fiapburger.adapter.out.produto.DeletarProdutoAdapter;
+import com.fiap.fiapburger.application.core.usecase.produto.DeletarProdutoUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

@@ -12,15 +12,15 @@ public class ClienteRequest implements Serializable {
 
     private static final long serialVersionUID = 1769503439301673405L;
 
-    @NotBlank
+    @NotBlank(message = "CPF não pode ser vazio!")
     @JsonProperty("cpf")
     private String cpf;
 
-    @NotBlank
+    @NotBlank(message = "Email não pode ser vazio!")
     @JsonProperty("email")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Nome não pode ser vazio!")
     @JsonProperty("nome")
     private String nome;
 

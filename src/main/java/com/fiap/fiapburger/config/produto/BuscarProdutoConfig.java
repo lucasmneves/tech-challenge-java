@@ -1,7 +1,9 @@
-package com.fiap.fiapburger.config;
+package com.fiap.fiapburger.config.produto;
 
-import com.fiap.fiapburger.adapter.out.BuscarProdutoAdapter;
-import com.fiap.fiapburger.application.core.usecase.BuscarProdutoUseCase;
+
+
+import com.fiap.fiapburger.adapter.out.produto.BuscarProdutoAdapter;
+import com.fiap.fiapburger.application.core.usecase.produto.BuscarProdutoUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
