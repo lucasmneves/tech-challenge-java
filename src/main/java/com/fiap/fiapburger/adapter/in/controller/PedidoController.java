@@ -91,13 +91,13 @@ public class PedidoController {
         return ResponseEntity.ok(pedido);
     }
 
-    @GetMapping("todos")
+    @GetMapping()
     public ResponseEntity<List<PedidoResponse>> listaPedidos(){
         var pedidos = listarPedidosInputPort.listaPedidos();
         return ResponseEntity.ok(pedidos);
     }
 
-    @GetMapping("todos/{id_status}")
+    @GetMapping("/listar/{id_status}")
     public ResponseEntity<List<PedidoResponse>> listaPedidosPorStatus(@PathVariable String id_status){
         var pedidos = listarPedidosInputPort.listaPedidosPorStatus(id_status);
         return ResponseEntity.ok(pedidos);
@@ -108,5 +108,4 @@ public class PedidoController {
         editarPedidoInputPort.atualizarStatusPedido(PedidoMapper.atualizarStatusPedido(atualizarStatusPedidoRequest));
         return ResponseEntity.ok("Status do pedido atualizado com sucesso!");
     };
-
 }

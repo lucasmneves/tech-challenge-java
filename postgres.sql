@@ -64,7 +64,7 @@ CREATE TABLE "public"."produtos" (
     "nome" VARCHAR(80) NOT NULL,
     "descricao" VARCHAR(127) NOT NULL,
     "url_imagem" VARCHAR(200) NOT NULL,
-    "preco" money NOT NULL,
+    "preco" character varying NOT NULL,
     "id_categoria" VARCHAR(36) NOT NULL,
     CONSTRAINT "produtos_id" PRIMARY KEY ("id")
 ) WITH (oids = false);
