@@ -67,6 +67,12 @@ public class ProdutoController {
         return ResponseEntity.ok(buscarTodos.buscarTodos());
     }
 
+    @GetMapping("/categoria/{id}")
+    public ResponseEntity<List<ProdutoResponse>> buscarProdutosPorCategoria(@PathVariable String id) {
+
+        return ResponseEntity.ok(buscarTodos.buscarTodosPorCategoria(id));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<ProdutoResponse> editarProduto(@PathVariable String id, @RequestBody ProdutoRequest produtoRequest) {
         ProdutoDTO produtoDTO = produtoMapper.toProdutoDTO(produtoRequest);

@@ -20,4 +20,9 @@ public class BuscarTodosProdutosUseCase implements BuscarTodosProdutosInputPort 
     public List<ProdutoResponse> buscarTodos() {
         return buscarTodosProdutosOutputPort.buscarTodos();
     }
+
+    @Override
+    public List<ProdutoResponse> buscarTodosPorCategoria(String id) {
+        return buscarTodosProdutosOutputPort.buscarTodosPorCategoria(id);
+    }
 }

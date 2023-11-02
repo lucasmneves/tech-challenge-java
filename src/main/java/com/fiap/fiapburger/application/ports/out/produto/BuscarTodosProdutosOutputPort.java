@@ -7,4 +7,5 @@ import java.util.List;
 public interface BuscarTodosProdutosOutputPort {
 
     List<ProdutoResponse> buscarTodos();
+    List<ProdutoResponse> buscarTodosPorCategoria(String id);
 }

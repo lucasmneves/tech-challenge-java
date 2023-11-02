@@ -19,6 +19,9 @@ public class BuscarTodosProdutosAdapter implements BuscarTodosProdutosOutputPort
     @Override
     public List<ProdutoResponse> buscarTodos() {
         return produtoRepository.findAllProdutosComCategoria();
-        //return mapper.toProdutoDTOList(produtosEntity);
+    }
+
+    public List<ProdutoResponse> buscarTodosPorCategoria(String id) {
+        return produtoRepository.findAllProdutosPorCategoria(id);
     }
 }
