@@ -6,6 +6,7 @@ import com.fiap.fiapburger.adapter.in.controller.mapper.ProdutoMapper;
 import com.fiap.fiapburger.application.core.domain.ProdutoDTO;
 
 
+import com.fiap.fiapburger.application.ports.in.produto.BuscarTodosProdutosInputPort;
 import com.fiap.fiapburger.application.ports.in.produto.BuscarProdutoInputPort;
 import com.fiap.fiapburger.application.ports.in.produto.DeletarProdutoInputPort;
 import com.fiap.fiapburger.application.ports.in.produto.EditarProdutoInputPort;
@@ -15,7 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.net.URI;
+import java.util.List;
 
 
 @RestController
@@ -24,6 +25,8 @@ public class ProdutoController {
 
     private final SalvarProdutoInputPort salvarProdutoInputPort;
     private final BuscarProdutoInputPort buscarProdutoInputPort;
+
+    private final BuscarTodosProdutosInputPort buscarTodos;
     private final EditarProdutoInputPort editarProdutoInputPort;
     private final DeletarProdutoInputPort deletarProdutoInputPort;
 
@@ -33,11 +36,12 @@ public class ProdutoController {
     @Autowired
     public ProdutoController(SalvarProdutoInputPort salvarProdutoInputPort,
                              BuscarProdutoInputPort buscarProdutoInputPort,
-                             EditarProdutoInputPort editarProdutoInputPort,
+                             BuscarTodosProdutosInputPort buscarTodos, EditarProdutoInputPort editarProdutoInputPort,
                              DeletarProdutoInputPort deletarProdutoInputPort,
                              ProdutoMapper produtoMapper) {
         this.salvarProdutoInputPort = salvarProdutoInputPort;
         this.buscarProdutoInputPort = buscarProdutoInputPort;
+        this.buscarTodos = buscarTodos;
         this.editarProdutoInputPort = editarProdutoInputPort;
         this.deletarProdutoInputPort = deletarProdutoInputPort;
         this.produtoMapper = produtoMapper;
@@ -55,6 +59,12 @@ public class ProdutoController {
         ProdutoDTO produtoDTO = buscarProdutoInputPort.buscar(id);
         ProdutoResponse produtoResponse = produtoMapper.toProdutoResponse(produtoDTO);
         return ResponseEntity.ok(produtoResponse);
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<ProdutoResponse>> buscarProdutos() {
+
+        return ResponseEntity.ok(buscarTodos.buscarTodos());
     }
 
     @PutMapping("/{id}")

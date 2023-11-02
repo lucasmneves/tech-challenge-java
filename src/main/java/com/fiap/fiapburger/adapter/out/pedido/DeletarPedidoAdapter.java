@@ -45,12 +45,13 @@ public class DeletarPedidoAdapter implements DeletarPedidoOutputPort {
 
     @Override
     public void deletar(String idProduto, String idPedido) {
-
+        String valorStr;
         BigDecimal valor = new BigDecimal("0");
 
         Optional<ProdutoEntity> produtoEntity = produtoRepository.findById(idProduto);
         if(produtoEntity.isPresent()){
-            valor = produtoEntity.get().getPreco();
+            valorStr = produtoEntity.get().getPreco().replace(",", "");
+            valor = BigDecimal.valueOf(Double.parseDouble(valorStr));
         }else{
             throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.PRODUTO_NAO_ENCONTRADO.value());
         }

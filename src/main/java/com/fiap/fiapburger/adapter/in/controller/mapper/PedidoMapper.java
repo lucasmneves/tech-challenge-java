@@ -10,6 +10,7 @@ import com.fiap.fiapburger.application.core.domain.PedidoDTO;
 import com.fiap.fiapburger.application.core.domain.ProdutoDTO;
 import org.mapstruct.Mapper;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 
@@ -69,10 +70,12 @@ public interface PedidoMapper {
         List<ItensPedidoResponse> listItensResponse = new ArrayList<ItensPedidoResponse>();
 
         for(int i = 0; i < pedidoEntity.size(); i++){
+            var valor = pedidoEntity.get(i).getProduto().getPreco().replace(",", "");
+
             ItensPedidoResponse itensResponse = new ItensPedidoResponse();
             itensResponse.setIdProduto(pedidoEntity.get(i).getProduto().getId());
             itensResponse.setNome(pedidoEntity.get(i).getProduto().getNome());
-            itensResponse.setValor(pedidoEntity.get(i).getProduto().getPreco());
+            itensResponse.setValor(BigDecimal.valueOf(Double.parseDouble(valor)));
             listItensResponse.add(itensResponse);
 
         }
