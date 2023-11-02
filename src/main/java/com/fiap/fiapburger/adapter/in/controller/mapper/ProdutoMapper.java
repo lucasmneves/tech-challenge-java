@@ -13,8 +13,7 @@ import java.util.List;
 public interface ProdutoMapper {
 
     ProdutoDTO toProdutoDTO(ProdutoRequest produtoRequest);
-
-    @Mapping(source="id_categoria", target = "categoria")
+    @Mapping(source="idCategoria", target = "categoria")
     ProdutoResponse toProdutoResponse(ProdutoDTO produtoDTO);
 
     List<ProdutoResponse> toProdutoResponseList(List<ProdutoDTO> produtoDTO);

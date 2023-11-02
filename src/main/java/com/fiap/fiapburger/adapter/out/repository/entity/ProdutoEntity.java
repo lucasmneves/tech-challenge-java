@@ -26,8 +26,8 @@ public class ProdutoEntity implements Serializable {
 	private String id;
 	private String nome;
 	private String descricao;
-	private String url_imagem;
+	private String url_Imagem;
 	private String preco;
-	private String id_categoria;
+	private String id_Categoria;
 
 }

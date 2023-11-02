@@ -10,24 +10,22 @@ public class ProdutoDTO implements Serializable {
     private String id;
     private String nome;
     private String descricao;
-    private String url_imagem;
+    private String urlImagem;
     private BigDecimal preco;
-    private String id_categoria;
-
-    public String getUrl_imagem() {
-        return url_imagem;
+    private String idCategoria;
+    public String getUrlImagem() {
+        return urlImagem;
+    }
+    public void setUrlImagem(String urlImagem) {
+        this.urlImagem = urlImagem;
     }
 
-    public void setUrl_imagem(String url_imagem) {
-        this.url_imagem = url_imagem;
+    public String getIdCategoria() {
+        return idCategoria;
     }
 
-    public String getId_categoria() {
-        return id_categoria;
-    }
-
-    public void setId_categoria(String id_categoria) {
-        this.id_categoria = id_categoria;
+    public void setIdCategoria(String idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
     public String getId() {

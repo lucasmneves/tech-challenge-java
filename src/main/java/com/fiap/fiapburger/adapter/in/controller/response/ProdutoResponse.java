@@ -32,12 +32,13 @@ public class ProdutoResponse {
         this.preco = preco;
     }
 
-    public ProdutoResponse(String id, String nome, String categoria, String descricao, String preco) {
+    public ProdutoResponse(String id, String nome, String categoria, String descricao, String preco, String url) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.preco = BigDecimal.valueOf(Double.parseDouble(preco.replace(",","")));
         this.categoria = categoria;
+        this.urlImagem = url;
     }
 
     public String getId() {

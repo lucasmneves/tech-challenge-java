@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface ProdutoRepository extends JpaRepository<ProdutoEntity, String> {
     Optional<ProdutoEntity> findByNome(String nome);
 
-    @Query("SELECT new com.fiap.fiapburger.adapter.in.controller.response.ProdutoResponse(p.id, p.nome,c.nome,p.descricao,p.preco) FROM ProdutoCCatEntity p JOIN p.categoria c")
+    @Query("SELECT new com.fiap.fiapburger.adapter.in.controller.response.ProdutoResponse(p.id, p.nome,c.nome,p.descricao,p.preco, p.url_imagem) FROM ProdutoCCatEntity p JOIN p.categoria c")
     List<ProdutoResponse> findAllProdutosComCategoria();
 
     @Query("SELECT new com.fiap.fiapburger.adapter.out.repository.entity.ProdutoEntity(p.id, p.nome,p.descricao,p.url_imagem,p.preco,c.nome) FROM ProdutoCCatEntity p JOIN p.categoria c  WHERE p.id = :id")
