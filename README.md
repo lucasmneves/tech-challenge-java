@@ -13,6 +13,7 @@ Este projeto faz parte de um sistema de autoatendimento de fast food desenvolvid
 - **Remoção de Produtos**: Fornece a funcionalidade para excluir produtos do sistema.
 - **Busca por Categoria**: Pesquise produtos com base em suas categorias.
 
+
 ## Tecnologias Utilizadas
 
 - **Linguagem**: Java
@@ -23,6 +24,10 @@ Este projeto faz parte de um sistema de autoatendimento de fast food desenvolvid
 ## Como Rodar o Projeto
 
 1. **Pré-requisitos**:
-    - Java JDK 21 instalado
+    - Java JDK 17
     - Maven instalado
-    - PostgreSQL configurado e em execução
+    - Docker instalado e em execução
+
+2. Rode o comando `mvn clean package -DskipTests` na raiz do projeto para gerar o arquivo .jar
+
+3. Em seguida rode o comando `docker-compose up` para iniciar os containers do banco de dados e da aplicação
