@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tech-challenge-java-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tech-challenge-java
+  template:
+    metadata:
+      labels:
+        app: tech-challenge-java
+    spec:
+      containers:
+        - name: tech-challenge-java
+          image: tech-challenge-java-fiap-burguer-java
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "140m"
+            limits:
+              memory: "512Mi"
+              cpu: "140m"
+          ports:
+            - containerPort: 8989
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: tech-challenge-java-configmap
+                  key: datasource.url
+            - name: SPRING_DATASOURCE_USERNAME
+              value: postgres
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: tech-challenge-java-secret
+                  key: datasource.password
