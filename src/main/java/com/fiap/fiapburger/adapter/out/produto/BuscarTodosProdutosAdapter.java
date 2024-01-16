@@ -3,7 +3,7 @@ package com.fiap.fiapburger.adapter.out.produto;
 import com.fiap.fiapburger.adapter.in.controller.mapper.ProdutoMapper;
 import com.fiap.fiapburger.adapter.in.controller.response.ProdutoResponse;
 import com.fiap.fiapburger.adapter.out.repository.ProdutoRepository;
-import com.fiap.fiapburger.application.ports.out.produto.BuscarTodosProdutosOutputPort;
+import com.fiap.fiapburger.core.ports.out.produto.BuscarTodosProdutosOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

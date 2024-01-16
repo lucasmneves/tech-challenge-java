@@ -3,14 +3,14 @@ package com.fiap.fiapburger.adapter.in.controller;
 import com.fiap.fiapburger.adapter.in.controller.mapper.ClienteMapper;
 import com.fiap.fiapburger.adapter.in.controller.request.ClienteRequest;
 import com.fiap.fiapburger.adapter.in.controller.response.ClienteResponse;
-import com.fiap.fiapburger.application.ports.in.cliente.BuscarClienteInputPort;
-import com.fiap.fiapburger.application.ports.in.cliente.DeletarClienteInputPort;
-import com.fiap.fiapburger.application.ports.in.cliente.EditarClienteInputport;
+import com.fiap.fiapburger.core.ports.in.cliente.BuscarClienteInputPort;
+import com.fiap.fiapburger.core.ports.in.cliente.DeletarClienteInputPort;
+import com.fiap.fiapburger.core.ports.in.cliente.EditarClienteInputport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.fiap.fiapburger.application.ports.in.cliente.SalvarClienteInputport;
+import com.fiap.fiapburger.core.ports.in.cliente.SalvarClienteInputport;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
@@ -18,7 +18,6 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController {
-
     @Autowired
     private SalvarClienteInputport salvarClienteInputport;
     @Autowired
@@ -43,6 +42,7 @@ public class ClienteController {
         editarClienteInputport.editar(cliente);
         return ResponseEntity.ok("Cliente " + cliente.getNome() + " atualizado com sucesso!");
     };
+
    @GetMapping("/{cpf}")
     public ResponseEntity<ClienteResponse> buscar(@PathVariable String cpf){
         var cliente = buscarClienteInputPort.BuscaCliente(cpf);

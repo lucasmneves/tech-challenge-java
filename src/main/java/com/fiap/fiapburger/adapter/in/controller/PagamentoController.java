@@ -5,17 +5,14 @@ import com.fiap.fiapburger.adapter.in.controller.request.EfetuarPagamentoRequest
 import com.fiap.fiapburger.adapter.in.controller.response.ConsultarStatusPagamentoResponse;
 import com.fiap.fiapburger.adapter.in.controller.response.EfetuarPagamentoResponse;
 import com.fiap.fiapburger.adapter.in.controller.response.PagamentoResponse;
-import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
-import com.fiap.fiapburger.application.core.domain.PedidoDTO;
-import com.fiap.fiapburger.application.ports.in.pagamento.ConsultarStatusPagamentoInputPort;
-import com.fiap.fiapburger.application.ports.in.pagamento.EfetuarPagamentoInputPort;
-import com.fiap.fiapburger.application.ports.in.pagamento.ListarMeioPagamentoInputPort;
+import com.fiap.fiapburger.core.ports.in.pagamento.ConsultarStatusPagamentoInputPort;
+import com.fiap.fiapburger.core.ports.in.pagamento.EfetuarPagamentoInputPort;
+import com.fiap.fiapburger.core.ports.in.pagamento.ListarMeioPagamentoInputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 

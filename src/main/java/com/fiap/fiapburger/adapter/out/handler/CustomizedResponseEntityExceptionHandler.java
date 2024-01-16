@@ -3,8 +3,8 @@ package com.fiap.fiapburger.adapter.out.handler;
 
 import java.util.Date;
 
-import com.fiap.fiapburger.application.core.exception.ClienteNaoEncontradoException;
-import com.fiap.fiapburger.application.core.exception.ExceptionResponse;
+import com.fiap.fiapburger.core.domain.exception.ClienteNaoEncontradoException;
+import com.fiap.fiapburger.core.domain.exception.ExceptionResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

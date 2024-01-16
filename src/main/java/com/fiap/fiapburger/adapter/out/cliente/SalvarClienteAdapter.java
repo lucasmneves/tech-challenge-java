@@ -2,8 +2,8 @@ package com.fiap.fiapburger.adapter.out.cliente;
 
 import com.fiap.fiapburger.adapter.out.repository.ClienteRepository;
 import com.fiap.fiapburger.adapter.out.repository.mapper.ClienteEntityMapper;
-import com.fiap.fiapburger.application.core.domain.ClienteDTO;
-import com.fiap.fiapburger.application.ports.out.cliente.SalvarClienteOutputPort;
+import com.fiap.fiapburger.core.domain.entities.ClienteDTO;
+import com.fiap.fiapburger.core.ports.out.cliente.SalvarClienteOutputPort;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

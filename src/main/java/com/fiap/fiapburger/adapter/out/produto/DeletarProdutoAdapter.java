@@ -2,9 +2,9 @@ package com.fiap.fiapburger.adapter.out.produto;
 
 import com.fiap.fiapburger.adapter.out.repository.ProdutoRepository;
 
-import com.fiap.fiapburger.application.core.exception.ExceptionsMessageEnum;
-import com.fiap.fiapburger.application.core.exception.ProdutoNaoEncontradoException;
-import com.fiap.fiapburger.application.ports.out.produto.DeletarProdutoOutputPort;
+import com.fiap.fiapburger.core.domain.exception.ExceptionsMessageEnum;
+import com.fiap.fiapburger.core.domain.exception.ProdutoNaoEncontradoException;
+import com.fiap.fiapburger.core.ports.out.produto.DeletarProdutoOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

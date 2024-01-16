@@ -1,18 +1,12 @@
 
 package com.fiap.fiapburger.adapter.out.pedido;
 
-import com.fiap.fiapburger.adapter.out.repository.ItensPedidoRepository;
 import com.fiap.fiapburger.adapter.out.repository.PedidoRepository;
-import com.fiap.fiapburger.adapter.out.repository.ProdutoRepository;
 import com.fiap.fiapburger.adapter.out.repository.entity.PedidoEntity;
-import com.fiap.fiapburger.adapter.out.repository.entity.ProdutoEntity;
-import com.fiap.fiapburger.adapter.out.repository.mapper.ItensPedidoEntityMapper;
-import com.fiap.fiapburger.application.core.domain.ItensPedidoDTO;
-import com.fiap.fiapburger.application.core.domain.PedidoDTO;
-import com.fiap.fiapburger.application.core.exception.ClienteNaoEncontradoException;
-import com.fiap.fiapburger.application.core.exception.ExceptionsMessageEnum;
-import com.fiap.fiapburger.application.ports.out.pedido.ConfirmarPedidoOutputPort;
-import com.fiap.fiapburger.application.ports.out.pedido.EditarPedidoOutputPort;
+import com.fiap.fiapburger.core.domain.entities.PedidoDTO;
+import com.fiap.fiapburger.core.domain.exception.ClienteNaoEncontradoException;
+import com.fiap.fiapburger.core.domain.exception.ExceptionsMessageEnum;
+import com.fiap.fiapburger.core.ports.out.pedido.ConfirmarPedidoOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

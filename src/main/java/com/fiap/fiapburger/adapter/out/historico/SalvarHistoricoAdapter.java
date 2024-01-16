@@ -2,8 +2,8 @@ package com.fiap.fiapburger.adapter.out.historico;
 
 import com.fiap.fiapburger.adapter.out.repository.HistoricoRepository;
 import com.fiap.fiapburger.adapter.out.repository.mapper.HistoricoMapper;
-import com.fiap.fiapburger.application.core.domain.HistoricoDTO;
-import com.fiap.fiapburger.application.ports.out.historico.SalvarHistoricoOutputPort;
+import com.fiap.fiapburger.core.domain.entities.HistoricoDTO;
+import com.fiap.fiapburger.core.ports.out.historico.SalvarHistoricoOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

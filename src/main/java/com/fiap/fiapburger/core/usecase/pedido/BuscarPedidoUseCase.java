@@ -1,0 +1,21 @@
+
+package com.fiap.fiapburger.core.usecase.pedido;
+
+import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
+import com.fiap.fiapburger.core.domain.entities.PedidoDTO;
+import com.fiap.fiapburger.core.ports.in.pedido.BuscarPedidoInputPort;
+import com.fiap.fiapburger.core.ports.out.pedido.BuscarPedidoOutputPort;
+
+
+public class BuscarPedidoUseCase implements BuscarPedidoInputPort {
+    private final BuscarPedidoOutputPort buscarPedidoOutputPort;
+    public BuscarPedidoUseCase(BuscarPedidoOutputPort buscarPedidoOutputPort) {
+        this.buscarPedidoOutputPort = buscarPedidoOutputPort;
+    }
+    @Override
+    public PedidoResponse buscaPedido(PedidoDTO pedido) {
+
+       return this.buscarPedidoOutputPort.buscar(pedido);
+    }
+}
+

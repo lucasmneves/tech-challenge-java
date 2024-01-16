@@ -1,6 +1,6 @@
 package com.fiap.fiapburger.config.produto;
 import com.fiap.fiapburger.adapter.out.produto.SalvarProdutoAdapter;
-import com.fiap.fiapburger.application.core.usecase.produto.SalvarProdutoUseCase;
+import com.fiap.fiapburger.core.usecase.produto.SalvarProdutoUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

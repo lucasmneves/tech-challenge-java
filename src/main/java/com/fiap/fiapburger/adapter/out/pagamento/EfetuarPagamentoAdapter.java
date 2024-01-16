@@ -1,16 +1,14 @@
 package com.fiap.fiapburger.adapter.out.pagamento;
 
 import com.fiap.fiapburger.adapter.in.controller.mapper.PagamentoMapper;
-import com.fiap.fiapburger.adapter.in.controller.request.EfetuarPagamentoRequest;
 import com.fiap.fiapburger.adapter.in.controller.response.EfetuarPagamentoResponse;
-import com.fiap.fiapburger.adapter.in.controller.response.PagamentoResponse;
 import com.fiap.fiapburger.adapter.out.repository.PagamentoRepository;
 import com.fiap.fiapburger.adapter.out.repository.PedidoRepository;
 import com.fiap.fiapburger.adapter.out.repository.entity.PagamentoEntity;
 import com.fiap.fiapburger.adapter.out.repository.entity.PedidoEntity;
-import com.fiap.fiapburger.application.core.exception.ClienteNaoEncontradoException;
-import com.fiap.fiapburger.application.core.exception.ExceptionsMessageEnum;
-import com.fiap.fiapburger.application.ports.out.pagamento.EfetuarPagamentoOutputPort;
+import com.fiap.fiapburger.core.domain.exception.ClienteNaoEncontradoException;
+import com.fiap.fiapburger.core.domain.exception.ExceptionsMessageEnum;
+import com.fiap.fiapburger.core.ports.out.pagamento.EfetuarPagamentoOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

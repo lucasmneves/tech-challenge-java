@@ -1,12 +1,12 @@
 package com.fiap.fiapburger.adapter.out.cliente;
 
-import com.fiap.fiapburger.application.core.exception.ClienteNaoEncontradoException;
-import com.fiap.fiapburger.application.core.exception.ExceptionsMessageEnum;
+import com.fiap.fiapburger.core.domain.exception.ClienteNaoEncontradoException;
+import com.fiap.fiapburger.core.domain.exception.ExceptionsMessageEnum;
 import com.fiap.fiapburger.adapter.out.repository.ClienteRepository;
 import com.fiap.fiapburger.adapter.out.repository.entity.ClienteEntity;
 import com.fiap.fiapburger.adapter.out.repository.mapper.ClienteEntityMapper;
-import com.fiap.fiapburger.application.core.domain.ClienteDTO;
-import com.fiap.fiapburger.application.ports.out.cliente.EditarClienteOutputPort;
+import com.fiap.fiapburger.core.domain.entities.ClienteDTO;
+import com.fiap.fiapburger.core.ports.out.cliente.EditarClienteOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

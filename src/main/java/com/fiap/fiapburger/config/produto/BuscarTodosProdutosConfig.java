@@ -2,7 +2,7 @@ package com.fiap.fiapburger.config.produto;
 
 
 import com.fiap.fiapburger.adapter.out.produto.BuscarTodosProdutosAdapter;
-import com.fiap.fiapburger.application.core.usecase.produto.BuscarTodosProdutosUseCase;
+import com.fiap.fiapburger.core.usecase.produto.BuscarTodosProdutosUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

@@ -3,7 +3,7 @@ package com.fiap.fiapburger.adapter.out.pedido;
 import com.fiap.fiapburger.adapter.in.controller.mapper.PedidoMapper;
 import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
 import com.fiap.fiapburger.adapter.out.repository.PedidoRepository;
-import com.fiap.fiapburger.application.ports.out.pedido.ListarPedidosOutputPort;
+import com.fiap.fiapburger.core.ports.out.pedido.ListarPedidosOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.List;

@@ -3,14 +3,14 @@ package com.fiap.fiapburger.adapter.in.controller;
 import com.fiap.fiapburger.adapter.in.controller.request.ProdutoRequest;
 import com.fiap.fiapburger.adapter.in.controller.response.ProdutoResponse;
 import com.fiap.fiapburger.adapter.in.controller.mapper.ProdutoMapper;
-import com.fiap.fiapburger.application.core.domain.ProdutoDTO;
+import com.fiap.fiapburger.core.domain.entities.ProdutoDTO;
 
 
-import com.fiap.fiapburger.application.ports.in.produto.BuscarTodosProdutosInputPort;
-import com.fiap.fiapburger.application.ports.in.produto.BuscarProdutoInputPort;
-import com.fiap.fiapburger.application.ports.in.produto.DeletarProdutoInputPort;
-import com.fiap.fiapburger.application.ports.in.produto.EditarProdutoInputPort;
-import com.fiap.fiapburger.application.ports.in.produto.SalvarProdutoInputPort;
+import com.fiap.fiapburger.core.ports.in.produto.BuscarTodosProdutosInputPort;
+import com.fiap.fiapburger.core.ports.in.produto.BuscarProdutoInputPort;
+import com.fiap.fiapburger.core.ports.in.produto.DeletarProdutoInputPort;
+import com.fiap.fiapburger.core.ports.in.produto.EditarProdutoInputPort;
+import com.fiap.fiapburger.core.ports.in.produto.SalvarProdutoInputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

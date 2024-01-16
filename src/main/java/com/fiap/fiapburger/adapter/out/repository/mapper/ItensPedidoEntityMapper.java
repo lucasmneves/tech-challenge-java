@@ -1,9 +1,7 @@
 package com.fiap.fiapburger.adapter.out.repository.mapper;
 
 import com.fiap.fiapburger.adapter.out.repository.entity.ItensPedidoEntity;
-import com.fiap.fiapburger.adapter.out.repository.entity.PedidoEntity;
-import com.fiap.fiapburger.application.core.domain.ItensPedidoDTO;
-import com.fiap.fiapburger.application.core.domain.PedidoDTO;
+import com.fiap.fiapburger.core.domain.entities.ItensPedidoDTO;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

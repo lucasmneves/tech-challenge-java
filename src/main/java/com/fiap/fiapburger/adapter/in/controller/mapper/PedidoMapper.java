@@ -5,9 +5,9 @@ import com.fiap.fiapburger.adapter.in.controller.response.ItensPedidoResponse;
 import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
 import com.fiap.fiapburger.adapter.out.repository.entity.ItensPedidoEntity;
 import com.fiap.fiapburger.adapter.out.repository.entity.PedidoEntity;
-import com.fiap.fiapburger.application.core.domain.ItensPedidoDTO;
-import com.fiap.fiapburger.application.core.domain.PedidoDTO;
-import com.fiap.fiapburger.application.core.domain.ProdutoDTO;
+import com.fiap.fiapburger.core.domain.entities.ItensPedidoDTO;
+import com.fiap.fiapburger.core.domain.entities.PedidoDTO;
+import com.fiap.fiapburger.core.domain.entities.ProdutoDTO;
 import org.mapstruct.Mapper;
 
 import java.math.BigDecimal;

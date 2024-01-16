@@ -2,11 +2,10 @@ package com.fiap.fiapburger.adapter.in.controller;
 
 import com.fiap.fiapburger.adapter.in.controller.request.HistoricoRequest;
 import com.fiap.fiapburger.adapter.out.repository.mapper.HistoricoMapper;
-import com.fiap.fiapburger.application.ports.in.historico.SalvarHistoricoInputPort;
+import com.fiap.fiapburger.core.ports.in.historico.SalvarHistoricoInputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.function.EntityResponse;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;

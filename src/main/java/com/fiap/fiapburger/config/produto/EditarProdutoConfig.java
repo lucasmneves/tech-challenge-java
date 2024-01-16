@@ -1,7 +1,7 @@
 package com.fiap.fiapburger.config.produto;
 
 import com.fiap.fiapburger.adapter.out.produto.EditarProdutoAdapter;
-import com.fiap.fiapburger.application.core.usecase.produto.EditarProdutoUseCase;
+import com.fiap.fiapburger.core.usecase.produto.EditarProdutoUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

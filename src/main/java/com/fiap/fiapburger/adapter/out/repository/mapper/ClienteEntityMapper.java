@@ -1,7 +1,7 @@
 package com.fiap.fiapburger.adapter.out.repository.mapper;
 
 import com.fiap.fiapburger.adapter.out.repository.entity.ClienteEntity;
-import com.fiap.fiapburger.application.core.domain.ClienteDTO;
+import com.fiap.fiapburger.core.domain.entities.ClienteDTO;
 import org.mapstruct.Mapper;
 
 
