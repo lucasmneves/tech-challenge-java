@@ -13,7 +13,7 @@ public class RemoverItensPedidoRequest implements Serializable {
     @JsonProperty("pedido")
     private String idPedido;
 
-    @JsonProperty("produto")
+    @JsonProperty("id_produto")
     private String idProduto;
 
 }

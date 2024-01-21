@@ -15,19 +15,9 @@ import javax.validation.Valid;
 public class HistoricoController {
     @Autowired
     private SalvarHistoricoInputPort salvarHistoricoInputPort;
-    /*@Autowired
-    private DeletarHistoricoInputPort deletarHistoricoInputPort;
-    @Autowired
-    private EditarHistoricoInputPort editarHistoricoInputPort;
-    @Autowired
-    private BuscarHistoricoInputPort buscarHistoricoInputPort;*/
-    @Autowired
-    private HistoricoMapper historicoMapper;
-
     @PostMapping
     public ResponseEntity<Void> salvar(@Valid @RequestBody HistoricoRequest historicoRequest, UriComponentsBuilder uriComponentsBuilder){
-        var historico = historicoMapper.toHistoricoDTO(historicoRequest);
-        salvarHistoricoInputPort.salvar(historico);
-        return ResponseEntity.created(uriComponentsBuilder.path("/historico/{id}").buildAndExpand(historico.getId()).toUri()).build();
+        salvarHistoricoInputPort.salvar(historicoRequest);
+        return ResponseEntity.created(uriComponentsBuilder.path("/historico/{id}").buildAndExpand(historicoRequest.getId()).toUri()).build();
     }
 }

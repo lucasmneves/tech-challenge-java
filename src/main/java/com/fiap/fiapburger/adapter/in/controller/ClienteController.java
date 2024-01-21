@@ -27,23 +27,20 @@ public class ClienteController {
     @Autowired
     private DeletarClienteInputPort deletarClienteInputPort;
 
-    @Autowired
-    private ClienteMapper clienteMapper;
     @PostMapping
     public ResponseEntity<Void> salvar(@Valid @RequestBody ClienteRequest clienteRequest, UriComponentsBuilder uriComponentsBuilder){
-        var cliente = clienteMapper.toCliente(clienteRequest);
-        salvarClienteInputport.salvar(cliente);
-        return ResponseEntity.created(uriComponentsBuilder.path("/cliente/{cpf}").buildAndExpand(cliente.getCpf()).toUri()).build();
+        salvarClienteInputport.salvar(clienteRequest);
+        return ResponseEntity.created(uriComponentsBuilder.path("/cliente/{cpf}").buildAndExpand(clienteRequest.getCpf()).toUri()).build();
     };
 
     @PatchMapping
     public ResponseEntity<String> editar(@Valid @RequestBody ClienteRequest clienteRequest){
-        var cliente = clienteMapper.toCliente(clienteRequest);
-        editarClienteInputport.editar(cliente);
-        return ResponseEntity.ok("Cliente " + cliente.getNome() + " atualizado com sucesso!");
+        editarClienteInputport.editar(clienteRequest);
+        return ResponseEntity.ok("Cliente " + clienteRequest.getNome() + " atualizado com sucesso!");
     };
 
    @GetMapping("/{cpf}")
+
     public ResponseEntity<ClienteResponse> buscar(@PathVariable String cpf){
         var cliente = buscarClienteInputPort.BuscaCliente(cpf);
         return ResponseEntity.ok(cliente);

@@ -12,12 +12,14 @@ public class ConsultarStatusPagamentoUseCase implements ConsultarStatusPagamento
         this.consultarStatusPagamentoOutputPort = consultarStatusPagamentoOutputPort;
     }
     @Override
-    public ConsultarStatusPagamentoResponse consultarStatusPagamento(ConsultarStatusPagamentoResponse consultarStatusPagamentoResponse) {
+    public ConsultarStatusPagamentoResponse consultarStatusPagamento(String idPedido) {
 
-        consultarStatusPagamentoResponse.setStatus("Confirmado");
-        consultarStatusPagamentoResponse.setMensagem("Pagamento aprovado!");
+        ConsultarStatusPagamentoResponse statusPagamento = new ConsultarStatusPagamentoResponse();
+        statusPagamento.setIdPedido(idPedido);
+        statusPagamento.setStatus("Confirmado");
+        statusPagamento.setMensagem("Pagamento aprovado!");
 
-        return this.consultarStatusPagamentoOutputPort.consultarStatusPagamento(consultarStatusPagamentoResponse);
+        return this.consultarStatusPagamentoOutputPort.consultarStatusPagamento(statusPagamento);
     }
 }
 

@@ -39,16 +39,13 @@ public class PedidoController {
     @Autowired
     private ListarPedidosInputPort listarPedidosInputPort;
 
-    @Autowired
-    private PedidoMapper pedidoMapper;
+
 
     @PostMapping
     @ResponseBody
     public ResponseEntity<SalvarPedidoResponse> salvar(@Valid @RequestBody SalvarPedidoRequest salvarPedidoRequest){
-        var pedido = pedidoMapper.toPedido(salvarPedidoRequest);
-        salvarPedidoInputPort.salvar(pedido);
-        SalvarPedidoResponse response = new SalvarPedidoResponse();
-        response.setId(pedido.getId());
+
+        var response = salvarPedidoInputPort.salvar(salvarPedidoRequest);
         return ResponseEntity.ok(response);
     }
 

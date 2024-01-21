@@ -11,10 +11,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SalvarClienteAdapter implements SalvarClienteOutputPort {
-
     @Autowired
     private ClienteRepository clienteRepository;
-
     @Autowired
     private ClienteEntityMapper clienteEntityMapper;
     @Override

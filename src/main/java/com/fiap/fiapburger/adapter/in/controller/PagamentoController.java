@@ -29,31 +29,24 @@ public class PagamentoController {
     @Autowired
     private ConsultarStatusPagamentoInputPort consultarStatusPagamentoInputPort;
 
-    @Autowired
-    private PagamentoMapper pagamentoMapper;
-
     @GetMapping()
     @ResponseBody
     public List<PagamentoResponse> listarMeiosPagamentos(){
-        var pagamentos = listarMeiosPagamentosInputPort.listaMeio();
-        return pagamentos;
+        return listarMeiosPagamentosInputPort.listaMeio();
     }
 
     @PostMapping
     public ResponseEntity<EfetuarPagamentoResponse> efetuarPagamento(@RequestBody EfetuarPagamentoRequest efetuarPagamentoRequest){
 
-        var pagamento = pagamentoMapper.toEfetuarPagamentoResponse(efetuarPagamentoRequest);
-        efetuarPagamentoInputPort.efetuarPagamento(pagamento);
-
+        var pagamento = efetuarPagamentoInputPort.efetuarPagamento(efetuarPagamentoRequest);
         return ResponseEntity.ok(pagamento);
     };
 
     @GetMapping("/{id}")
     public ResponseEntity<ConsultarStatusPagamentoResponse> consultaStatusPagamento(@PathVariable String id){
-        ConsultarStatusPagamentoResponse statusPagamento = new ConsultarStatusPagamentoResponse();
-        statusPagamento.setIdPedido(id);
-        var pedido = consultarStatusPagamentoInputPort.consultarStatusPagamento(statusPagamento);
-        return ResponseEntity.ok(pedido);
+
+        var statusPagamento = consultarStatusPagamentoInputPort.consultarStatusPagamento(id);
+        return ResponseEntity.ok(statusPagamento);
     }
 
 

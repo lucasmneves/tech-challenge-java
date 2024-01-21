@@ -21,10 +21,10 @@ public class SalvarPedidoAdapter implements SalvarPedidoOutputPort {
     private PedidoEntityMapper pedidoEntityMapper;
 
     @Override
-    public void salvar(PedidoDTO pedido) {
+    public PedidoEntity salvar(PedidoDTO pedido) {
         List<PedidoEntity> listaPedidos = pedidoRepository.findAll();
         var pedidoEntity = pedidoEntityMapper.toPedidoEntity(pedido);
         pedidoEntity.setSenha(listaPedidos.size() + 1);
-        pedidoRepository.save(pedidoEntity);
+        return pedidoRepository.save(pedidoEntity);
     }
 }
