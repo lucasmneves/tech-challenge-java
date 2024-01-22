@@ -13,7 +13,6 @@ public class BuscarClienteUseCase implements BuscarClienteInputPort {
     }
     @Override
     public ClienteResponse BuscaCliente(String cpf) {
-
        return this.buscarClienteOutputPort.buscar(cpf);
     }
 }

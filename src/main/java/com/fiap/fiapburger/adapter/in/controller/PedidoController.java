@@ -20,22 +20,16 @@ public class PedidoController {
 
     @Autowired
     private SalvarPedidoInputPort salvarPedidoInputPort;
-
     @Autowired
     private EditarPedidoInputPort editarPedidoInputPort;
-
     @Autowired
     private BuscarPedidoInputPort buscarPedidoInputPort;
-
     @Autowired
     private DeletarPedidoInputPort deletarPedidoInputPort;
-
     @Autowired
     private ConfirmarPedidoInputPort confirmarPedidoInputPort;
-
     @Autowired
     private AvaliarPedidoInputPort avaliarPedidoInputPort;
-
     @Autowired
     private ListarPedidosInputPort listarPedidosInputPort;
 
@@ -71,10 +65,8 @@ public class PedidoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PedidoResponse> buscar(@PathVariable String id){
-        PedidoDTO pedidoDTO = new PedidoDTO();
-        pedidoDTO.setId(id);
-        var pedido = buscarPedidoInputPort.buscaPedido(pedidoDTO);
+    public ResponseEntity<PedidoResponse> buscar(@PathVariable String idPedido){
+        var pedido = buscarPedidoInputPort.buscaPedido(idPedido);
         return ResponseEntity.ok(pedido);
     }
 

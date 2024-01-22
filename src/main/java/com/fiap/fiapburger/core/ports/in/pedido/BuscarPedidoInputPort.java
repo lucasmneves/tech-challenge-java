@@ -4,5 +4,5 @@ import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
 import com.fiap.fiapburger.core.domain.entities.PedidoDTO;
 
 public interface BuscarPedidoInputPort {
-    PedidoResponse buscaPedido(PedidoDTO pedido);
+    PedidoResponse buscaPedido(String idPedido);
 }

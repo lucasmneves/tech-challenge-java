@@ -13,9 +13,10 @@ public class BuscarPedidoUseCase implements BuscarPedidoInputPort {
         this.buscarPedidoOutputPort = buscarPedidoOutputPort;
     }
     @Override
-    public PedidoResponse buscaPedido(PedidoDTO pedido) {
-
-       return this.buscarPedidoOutputPort.buscar(pedido);
+    public PedidoResponse buscaPedido(String idPedido) {
+        PedidoDTO pedidoDTO = new PedidoDTO();
+        pedidoDTO.setId(idPedido);
+        return this.buscarPedidoOutputPort.buscar(pedidoDTO);
     }
 }
 
