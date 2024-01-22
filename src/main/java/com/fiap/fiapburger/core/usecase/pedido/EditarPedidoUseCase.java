@@ -1,5 +1,7 @@
 package com.fiap.fiapburger.core.usecase.pedido;
 
+import com.fiap.fiapburger.adapter.in.controller.mapper.PedidoMapper;
+import com.fiap.fiapburger.adapter.in.controller.request.AdicionarItensPedidoRequest;
 import com.fiap.fiapburger.core.domain.entities.ItensPedidoDTO;
 import com.fiap.fiapburger.core.domain.entities.PedidoDTO;
 import com.fiap.fiapburger.core.ports.in.pedido.EditarPedidoInputPort;
@@ -23,8 +25,11 @@ public class EditarPedidoUseCase implements EditarPedidoInputPort {
     }
 
     @Override
-    public void editar(PedidoDTO pedidoDTO, ItensPedidoDTO itensPedido) {
-        editarPedidoOutputPort.editar(pedidoDTO, itensPedido);
+    public void editar(AdicionarItensPedidoRequest itensPedidoRequest) {
+        ItensPedidoDTO itensPedido = PedidoMapper.adicionarItensPedido(itensPedidoRequest);
+        PedidoDTO pedido = PedidoMapper.editar(itensPedidoRequest);
+        this.adicionarItens(itensPedido);
+        editarPedidoOutputPort.editar(pedido, itensPedido);
     }
 
     @Override

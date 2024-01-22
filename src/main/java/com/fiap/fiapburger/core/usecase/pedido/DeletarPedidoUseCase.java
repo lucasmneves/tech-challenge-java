@@ -1,5 +1,8 @@
 package com.fiap.fiapburger.core.usecase.pedido;
 
+import com.fiap.fiapburger.adapter.in.controller.mapper.PedidoMapper;
+import com.fiap.fiapburger.adapter.in.controller.request.RemoverItensPedidoRequest;
+import com.fiap.fiapburger.core.domain.entities.ItensPedidoDTO;
 import com.fiap.fiapburger.core.ports.in.pedido.DeletarPedidoInputPort;
 import com.fiap.fiapburger.core.ports.out.pedido.DeletarPedidoOutputPort;
 
@@ -17,7 +20,10 @@ public class DeletarPedidoUseCase implements DeletarPedidoInputPort {
     }
 
     @Override
-    public void deletar(String idProduto, String idPedido) {
-        deletarPedidoOutputPort.deletar(idProduto, idPedido);
+    public void deletar(RemoverItensPedidoRequest itensPedidoRequest) {
+
+        //ItensPedidoDTO itensPedido = PedidoMapper.removerItensPedido(itensPedidoRequest);
+        this.removerItens(itensPedidoRequest.getIdProduto(), itensPedidoRequest.getIdPedido());
+        deletarPedidoOutputPort.deletar(itensPedidoRequest.getIdProduto(), itensPedidoRequest.getIdPedido());
     }
 }

@@ -47,6 +47,7 @@ public class DeletarPedidoAdapter implements DeletarPedidoOutputPort {
             valorStr = produtoEntity.get().getPreco().replace(",", "");
             valor = BigDecimal.valueOf(Double.parseDouble(valorStr));
         }else{
+            //todo:criar uma exception para pedido
             throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.PRODUTO_NAO_ENCONTRADO.value());
         }
 

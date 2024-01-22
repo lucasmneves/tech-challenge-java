@@ -1,5 +1,7 @@
 package com.fiap.fiapburger.core.usecase.pedido;
 
+import com.fiap.fiapburger.adapter.in.controller.mapper.PedidoMapper;
+import com.fiap.fiapburger.adapter.in.controller.request.ConfirmarPedidoRequest;
 import com.fiap.fiapburger.core.domain.entities.PedidoDTO;
 import com.fiap.fiapburger.core.ports.in.pedido.ConfirmarPedidoInputPort;
 import com.fiap.fiapburger.core.ports.out.pedido.ConfirmarPedidoOutputPort;
@@ -13,7 +15,8 @@ public class ConfirmarPedidoUseCase implements ConfirmarPedidoInputPort {
     }
 
     @Override
-    public void confirmar(PedidoDTO pedidoDTO) {
-        confirmarPedidoOutputPort.confirmar(pedidoDTO);
+    public void confirmar(ConfirmarPedidoRequest pedidoRequest) {
+        PedidoDTO pedido = PedidoMapper.confirmarPedido(pedidoRequest);
+        confirmarPedidoOutputPort.confirmar(pedido);
     }
 }

@@ -39,44 +39,34 @@ public class PedidoController {
     @Autowired
     private ListarPedidosInputPort listarPedidosInputPort;
 
-
-
     @PostMapping
     @ResponseBody
     public ResponseEntity<SalvarPedidoResponse> salvar(@Valid @RequestBody SalvarPedidoRequest salvarPedidoRequest){
-
         var response = salvarPedidoInputPort.salvar(salvarPedidoRequest);
         return ResponseEntity.ok(response);
     }
 
     @PatchMapping
     public ResponseEntity<String> adicionarItensPedido(@Valid @RequestBody AdicionarItensPedidoRequest adicionarItensPedidoRequest){
-        ItensPedidoDTO itensPedido = PedidoMapper.adicionarItensPedido(adicionarItensPedidoRequest);
-        PedidoDTO pedido = PedidoMapper.editar(adicionarItensPedidoRequest);
-        editarPedidoInputPort.adicionarItens(itensPedido);
-        editarPedidoInputPort.editar(pedido, itensPedido);
+        editarPedidoInputPort.editar(adicionarItensPedidoRequest);
         return ResponseEntity.ok("Pedido atualizado com sucesso!");
     };
 
     @PostMapping("/confirmar")
     public ResponseEntity<String> confirmarPedido(@Valid @RequestBody ConfirmarPedidoRequest confirmarPedidoRequest){
-        PedidoDTO pedido = PedidoMapper.confirmarPedido(confirmarPedidoRequest);
-        confirmarPedidoInputPort.confirmar(pedido);
+        confirmarPedidoInputPort.confirmar(confirmarPedidoRequest);
         return ResponseEntity.ok("Pedido confirmado com sucesso!");
     };
 
     @PostMapping("/avaliar")
     public ResponseEntity<String> avaliarPedido(@Valid @RequestBody AvaliarPedidoRequest avaliarPedidoRequest){
-        PedidoDTO pedido = PedidoMapper.avaliarPedido(avaliarPedidoRequest);
-        avaliarPedidoInputPort.avaliar(pedido);
+        avaliarPedidoInputPort.avaliar(avaliarPedidoRequest);
         return ResponseEntity.ok("Pedido avaliado com sucesso!");
     };
 
     @DeleteMapping()
     public ResponseEntity<String> deletar(@Valid @RequestBody RemoverItensPedidoRequest removerItensPedidoRequest){
-        ItensPedidoDTO itensPedido = PedidoMapper.removerItensPedido(removerItensPedidoRequest);
-        deletarPedidoInputPort.removerItens(removerItensPedidoRequest.getIdProduto(), removerItensPedidoRequest.getIdPedido());
-        deletarPedidoInputPort.deletar(removerItensPedidoRequest.getIdProduto(), removerItensPedidoRequest.getIdPedido());
+        deletarPedidoInputPort.deletar(removerItensPedidoRequest);
         return ResponseEntity.ok("Item do pedido deletado com sucesso!");
     }
 
