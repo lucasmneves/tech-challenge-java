@@ -49,9 +49,8 @@ public class ProdutoController {
 
     @PostMapping
     public ResponseEntity<ProdutoResponse> salvarProduto(@RequestBody ProdutoRequest produtoRequest, UriComponentsBuilder uriComponentsBuilder){
-        ProdutoDTO produtoDTO = produtoMapper.toProdutoDTO(produtoRequest);
-        salvarProdutoInputPort.salvar(produtoDTO);
-        return ResponseEntity.created(uriComponentsBuilder.path("/produtos/{id}").buildAndExpand(produtoDTO.getId()).toUri()).build();
+        var produtoSalvo = salvarProdutoInputPort.salvar(produtoRequest);
+        return ResponseEntity.created(uriComponentsBuilder.path("/produtos/{id}").buildAndExpand(produtoSalvo.getId()).toUri()).build();
     }
 
     @GetMapping("/{id}")
@@ -63,20 +62,17 @@ public class ProdutoController {
 
     @GetMapping()
     public ResponseEntity<List<ProdutoResponse>> buscarProdutos() {
-
         return ResponseEntity.ok(buscarTodos.buscarTodos());
     }
 
     @GetMapping("/categoria/{id}")
     public ResponseEntity<List<ProdutoResponse>> buscarProdutosPorCategoria(@PathVariable String id) {
-
         return ResponseEntity.ok(buscarTodos.buscarTodosPorCategoria(id));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ProdutoResponse> editarProduto(@PathVariable String id, @RequestBody ProdutoRequest produtoRequest) {
-        ProdutoDTO produtoDTO = produtoMapper.toProdutoDTO(produtoRequest);
-        ProdutoDTO updatedProdutoDTO = editarProdutoInputPort.editar(id, produtoDTO);
+        ProdutoDTO updatedProdutoDTO = editarProdutoInputPort.editar(id, produtoRequest);
         ProdutoResponse produtoResponse = produtoMapper.toProdutoResponse(updatedProdutoDTO);
         return ResponseEntity.ok(produtoResponse);
     }

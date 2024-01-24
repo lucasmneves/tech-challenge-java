@@ -11,7 +11,6 @@ public class BuscarProdutoUseCase implements BuscarProdutoInputPort {
 
     private final BuscarProdutoOutputPort buscarProdutoOutputPort;
 
-    @Autowired
     public BuscarProdutoUseCase(BuscarProdutoOutputPort buscarProdutoOutputPort) {
         this.buscarProdutoOutputPort = buscarProdutoOutputPort;
     }

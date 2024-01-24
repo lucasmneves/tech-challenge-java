@@ -5,7 +5,7 @@ import com.fiap.fiapburger.core.ports.out.cliente.DeletarClienteOutputPort;
 
 public class DeletarClienteUseCase implements DeletarClienteInputPort {
 
-    private DeletarClienteOutputPort deletarClienteOutputPort;
+    private final DeletarClienteOutputPort deletarClienteOutputPort;
 
     public DeletarClienteUseCase(DeletarClienteOutputPort deletarClienteOutputPort) {
         this.deletarClienteOutputPort = deletarClienteOutputPort;

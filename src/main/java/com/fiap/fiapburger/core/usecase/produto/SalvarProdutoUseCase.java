@@ -1,5 +1,7 @@
 package com.fiap.fiapburger.core.usecase.produto;
 
+import com.fiap.fiapburger.adapter.in.controller.mapper.ProdutoMapper;
+import com.fiap.fiapburger.adapter.in.controller.request.ProdutoRequest;
 import com.fiap.fiapburger.core.domain.entities.ProdutoDTO;
 
 import com.fiap.fiapburger.core.ports.in.produto.SalvarProdutoInputPort;
@@ -10,15 +12,18 @@ import java.util.UUID;
 public class SalvarProdutoUseCase implements SalvarProdutoInputPort {
 
     private final SalvarProdutoOutputPort outputPort;
-
-    public SalvarProdutoUseCase(SalvarProdutoOutputPort outputPort) {
+    private final ProdutoMapper produtoMapper;
+    public SalvarProdutoUseCase(SalvarProdutoOutputPort outputPort, ProdutoMapper produtoMapper) {
         this.outputPort = outputPort;
+        this.produtoMapper = produtoMapper;
     }
 
     @Override
-    public void salvar(ProdutoDTO produto) {
+    public ProdutoDTO salvar(ProdutoRequest produtoRequest) {
+        ProdutoDTO produtoDTO = produtoMapper.toProdutoDTO(produtoRequest);
         UUID id = UUID.randomUUID();
-        produto.setId(id.toString());
-        outputPort.salvar(produto);
+        produtoDTO.setId(id.toString());
+        outputPort.salvar(produtoDTO);
+        return produtoDTO;
     }
 }

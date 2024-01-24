@@ -9,11 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class EditarClienteUseCase implements EditarClienteInputport {
     public final EditarClienteOutputPort editarClienteOutputPort;
-
-    @Autowired
-    private ClienteMapper clienteMapper;
-    public EditarClienteUseCase(EditarClienteOutputPort editarClienteOutputPort) {
+    private final ClienteMapper clienteMapper;
+    public EditarClienteUseCase(EditarClienteOutputPort editarClienteOutputPort, ClienteMapper clienteMapper) {
         this.editarClienteOutputPort = editarClienteOutputPort;
+        this.clienteMapper = clienteMapper;
     }
     @Override
     public void editar(ClienteRequest clienteRequest) {

@@ -14,12 +14,13 @@ import java.util.Optional;
 
 @Component
 public class BuscarClienteAdapter implements BuscarClienteOutputPort {
+    private final ClienteRepository clienteRepository;
+    private final ClienteMapper clienteMapper;
 
-    @Autowired
-    private ClienteRepository clienteRepository;
-
-    @Autowired
-    ClienteMapper clienteMapper;
+    public BuscarClienteAdapter(ClienteRepository clienteRepository, ClienteMapper clienteMapper) {
+        this.clienteRepository = clienteRepository;
+        this.clienteMapper = clienteMapper;
+    }
 
     @Override
     public ClienteResponse buscar(String cpf) {
