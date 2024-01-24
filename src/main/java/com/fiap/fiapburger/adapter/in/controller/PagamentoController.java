@@ -20,14 +20,16 @@ import java.util.List;
 @RequestMapping(value = "/pagamento", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PagamentoController {
 
-    @Autowired
-    private ListarMeioPagamentoInputPort listarMeiosPagamentosInputPort;
 
-    @Autowired
-    private EfetuarPagamentoInputPort efetuarPagamentoInputPort;
+    private final ListarMeioPagamentoInputPort listarMeiosPagamentosInputPort;
+    private final EfetuarPagamentoInputPort efetuarPagamentoInputPort;
+    private final ConsultarStatusPagamentoInputPort consultarStatusPagamentoInputPort;
 
-    @Autowired
-    private ConsultarStatusPagamentoInputPort consultarStatusPagamentoInputPort;
+    public PagamentoController(ListarMeioPagamentoInputPort listarMeiosPagamentosInputPort, EfetuarPagamentoInputPort efetuarPagamentoInputPort, ConsultarStatusPagamentoInputPort consultarStatusPagamentoInputPort) {
+        this.listarMeiosPagamentosInputPort = listarMeiosPagamentosInputPort;
+        this.efetuarPagamentoInputPort = efetuarPagamentoInputPort;
+        this.consultarStatusPagamentoInputPort = consultarStatusPagamentoInputPort;
+    }
 
     @GetMapping()
     @ResponseBody

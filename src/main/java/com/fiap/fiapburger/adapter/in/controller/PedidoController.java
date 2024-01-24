@@ -18,20 +18,24 @@ import java.util.List;
 @RequestMapping("/pedido")
 public class PedidoController {
 
-    @Autowired
-    private SalvarPedidoInputPort salvarPedidoInputPort;
-    @Autowired
-    private EditarPedidoInputPort editarPedidoInputPort;
-    @Autowired
-    private BuscarPedidoInputPort buscarPedidoInputPort;
-    @Autowired
-    private DeletarPedidoInputPort deletarPedidoInputPort;
-    @Autowired
-    private ConfirmarPedidoInputPort confirmarPedidoInputPort;
-    @Autowired
-    private AvaliarPedidoInputPort avaliarPedidoInputPort;
-    @Autowired
-    private ListarPedidosInputPort listarPedidosInputPort;
+
+    private final SalvarPedidoInputPort salvarPedidoInputPort;
+    private final EditarPedidoInputPort editarPedidoInputPort;
+    private final BuscarPedidoInputPort buscarPedidoInputPort;
+    private final DeletarPedidoInputPort deletarPedidoInputPort;
+    private final ConfirmarPedidoInputPort confirmarPedidoInputPort;
+    private final AvaliarPedidoInputPort avaliarPedidoInputPort;
+    private final ListarPedidosInputPort listarPedidosInputPort;
+
+    public PedidoController(SalvarPedidoInputPort salvarPedidoInputPort, EditarPedidoInputPort editarPedidoInputPort, BuscarPedidoInputPort buscarPedidoInputPort, DeletarPedidoInputPort deletarPedidoInputPort, ConfirmarPedidoInputPort confirmarPedidoInputPort, AvaliarPedidoInputPort avaliarPedidoInputPort, ListarPedidosInputPort listarPedidosInputPort) {
+        this.salvarPedidoInputPort = salvarPedidoInputPort;
+        this.editarPedidoInputPort = editarPedidoInputPort;
+        this.buscarPedidoInputPort = buscarPedidoInputPort;
+        this.deletarPedidoInputPort = deletarPedidoInputPort;
+        this.confirmarPedidoInputPort = confirmarPedidoInputPort;
+        this.avaliarPedidoInputPort = avaliarPedidoInputPort;
+        this.listarPedidosInputPort = listarPedidosInputPort;
+    }
 
     @PostMapping
     @ResponseBody

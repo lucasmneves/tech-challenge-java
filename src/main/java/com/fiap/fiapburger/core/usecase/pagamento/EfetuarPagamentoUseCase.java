@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class EfetuarPagamentoUseCase implements EfetuarPagamentoInputPort {
     private final EfetuarPagamentoOutputPort efetuarPagamentoOutputPort;
-    @Autowired
-    private PagamentoMapper pagamentoMapper;
+    private final PagamentoMapper pagamentoMapper;
 
-    public EfetuarPagamentoUseCase(EfetuarPagamentoOutputPort efetuarPagamentoOutputPort) {
+    public EfetuarPagamentoUseCase(EfetuarPagamentoOutputPort efetuarPagamentoOutputPort, PagamentoMapper pagamentoMapper) {
         this.efetuarPagamentoOutputPort = efetuarPagamentoOutputPort;
+        this.pagamentoMapper = pagamentoMapper;
     }
     @Override
     public EfetuarPagamentoResponse efetuarPagamento(EfetuarPagamentoRequest efetuarPagamentoRequest) {

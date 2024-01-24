@@ -17,14 +17,13 @@ import java.util.Optional;
 @Component
 public class EfetuarPagamentoAdapter implements EfetuarPagamentoOutputPort {
 
-    @Autowired
-    private PagamentoRepository pagamentoRepository;
+    private final PagamentoRepository pagamentoRepository;
+    private final PedidoRepository pedidoRepository;
 
-    @Autowired
-    private PedidoRepository pedidoRepository;
-
-    @Autowired
-    PagamentoMapper pagamentoMapper;
+    public EfetuarPagamentoAdapter(PagamentoRepository pagamentoRepository, PedidoRepository pedidoRepository) {
+        this.pagamentoRepository = pagamentoRepository;
+        this.pedidoRepository = pedidoRepository;
+    }
 
     @Override
     public EfetuarPagamentoResponse efetuarPagamento(EfetuarPagamentoResponse efetuarPagamentoResponse) {

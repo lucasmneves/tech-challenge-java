@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class SalvarHistoricoUseCase implements SalvarHistoricoInputPort{
 
     private final SalvarHistoricoOutputPort salvarHistoricoOutputPort;
-    @Autowired
-    private HistoricoMapper historicoMapper;
+    private final HistoricoMapper historicoMapper;
 
-    public SalvarHistoricoUseCase(SalvarHistoricoOutputPort salvarHistoricoOutputPort) {
+    public SalvarHistoricoUseCase(SalvarHistoricoOutputPort salvarHistoricoOutputPort, HistoricoMapper historicoMapper) {
         this.salvarHistoricoOutputPort = salvarHistoricoOutputPort;
+        this.historicoMapper = historicoMapper;
     }
 
     @Override

@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class SalvarClienteUseCase implements SalvarClienteInputport {
 
     private final SalvarClienteOutputPort salvarClienteOutputPort;
-    @Autowired
-    private ClienteMapper clienteMapper;
-    public SalvarClienteUseCase(SalvarClienteOutputPort salvarClienteOutputPort) {
+    private final ClienteMapper clienteMapper;
+    public SalvarClienteUseCase(SalvarClienteOutputPort salvarClienteOutputPort, ClienteMapper clienteMapper) {
         this.salvarClienteOutputPort = salvarClienteOutputPort;
+        this.clienteMapper = clienteMapper;
     }
     @Override
     public void salvar(ClienteRequest clienteRequest) {

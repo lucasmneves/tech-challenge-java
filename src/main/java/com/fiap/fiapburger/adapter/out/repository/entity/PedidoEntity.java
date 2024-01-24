@@ -16,7 +16,7 @@ import java.util.Date;
 @JsonInclude(Include.NON_NULL)
 @Getter
 @Setter
-public class PedidoEntity implements Serializable {
+public class PedidoEntity extends Date implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

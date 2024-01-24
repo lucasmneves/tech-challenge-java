@@ -32,6 +32,4 @@ public class BuscarClienteAdapter implements BuscarClienteOutputPort {
             throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.CLIENTE_NAO_ENCONTRADO.value());
         }
     }
-
-
 }

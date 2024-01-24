@@ -18,17 +18,22 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController {
-    @Autowired
-    private SalvarClienteInputport salvarClienteInputport;
-    @Autowired
-    private EditarClienteInputport editarClienteInputport;
-    @Autowired
-    private BuscarClienteInputPort buscarClienteInputPort;
-    @Autowired
-    private DeletarClienteInputPort deletarClienteInputPort;
+
+    private final SalvarClienteInputport salvarClienteInputport;
+    private final EditarClienteInputport editarClienteInputport;
+    private final BuscarClienteInputPort buscarClienteInputPort;
+    private final DeletarClienteInputPort deletarClienteInputPort;
+
+    public ClienteController(SalvarClienteInputport salvarClienteInputport, EditarClienteInputport editarClienteInputport, BuscarClienteInputPort buscarClienteInputPort, DeletarClienteInputPort deletarClienteInputPort) {
+        this.salvarClienteInputport = salvarClienteInputport;
+        this.editarClienteInputport = editarClienteInputport;
+        this.buscarClienteInputPort = buscarClienteInputPort;
+        this.deletarClienteInputPort = deletarClienteInputPort;
+    }
 
     @PostMapping
     public ResponseEntity<Void> salvar(@Valid @RequestBody ClienteRequest clienteRequest, UriComponentsBuilder uriComponentsBuilder){
+        //todo validar a criacao do mesmo cliente;
         salvarClienteInputport.salvar(clienteRequest);
         return ResponseEntity.created(uriComponentsBuilder.path("/cliente/{cpf}").buildAndExpand(clienteRequest.getCpf()).toUri()).build();
     };

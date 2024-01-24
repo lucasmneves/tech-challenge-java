@@ -15,11 +15,12 @@ import java.util.UUID;
 public class SalvarPedidoUseCase implements SalvarPedidoInputPort {
 
     private final SalvarPedidoOutputPort salvarPedidoOutputPort;
-    @Autowired
-    private PedidoMapper pedidoMapper;
 
-    public SalvarPedidoUseCase(SalvarPedidoOutputPort salvarPedidoOutputPort) {
+    private final PedidoMapper pedidoMapper;
+
+    public SalvarPedidoUseCase(SalvarPedidoOutputPort salvarPedidoOutputPort, PedidoMapper pedidoMapper) {
         this.salvarPedidoOutputPort = salvarPedidoOutputPort;
+        this.pedidoMapper = pedidoMapper;
     }
     @Override
     public SalvarPedidoResponse salvar(SalvarPedidoRequest pedidoRequest) {
