@@ -15,7 +15,7 @@ public class WebhookPagamentoUseCase implements WebhookPagamentoInputPort {
     public WebhookPagamentoResponse webhookPagamento(WebhookPagamentoResponse webhookPagamentoResponse) {
 
         webhookPagamentoResponse.setStatus("Confirmado");
-        webhookPagamentoResponse.setMensagem("Pagamento aprovado!");
+        webhookPagamentoResponse.setMensagem("Pagamento confirmado!");
 
         return this.webhookPagamentoOutputPort.webhookPagamento(webhookPagamentoResponse);
     }
