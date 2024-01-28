@@ -2,11 +2,11 @@
 package com.fiap.fiapburger.application.core.usecase.pagamento;
 
 import com.fiap.fiapburger.adapter.in.controller.response.ConsultarStatusPagamentoResponse;
-import com.fiap.fiapburger.adapter.in.controller.response.EfetuarPagamentoResponse;
+import com.fiap.fiapburger.adapter.in.controller.response.WebhookPagamentoResponse;
 import com.fiap.fiapburger.application.ports.in.pagamento.ConsultarStatusPagamentoInputPort;
-import com.fiap.fiapburger.application.ports.in.pagamento.EfetuarPagamentoInputPort;
+import com.fiap.fiapburger.application.ports.in.pagamento.WebhookPagamentoInputPort;
 import com.fiap.fiapburger.application.ports.out.pagamento.ConsultarStatusPagamentoOutputPort;
-import com.fiap.fiapburger.application.ports.out.pagamento.EfetuarPagamentoOutputPort;
+import com.fiap.fiapburger.application.ports.out.pagamento.WebhookPagamentoOutputPort;
 
 
 public class ConsultarStatusPagamentoUseCase implements ConsultarStatusPagamentoInputPort {
@@ -16,9 +16,6 @@ public class ConsultarStatusPagamentoUseCase implements ConsultarStatusPagamento
     }
     @Override
     public ConsultarStatusPagamentoResponse consultarStatusPagamento(ConsultarStatusPagamentoResponse consultarStatusPagamentoResponse) {
-
-        consultarStatusPagamentoResponse.setStatus("Confirmado");
-        consultarStatusPagamentoResponse.setMensagem("Pagamento aprovado!");
 
         return this.consultarStatusPagamentoOutputPort.consultarStatusPagamento(consultarStatusPagamentoResponse);
     }

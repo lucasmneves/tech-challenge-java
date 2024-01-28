@@ -3,11 +3,11 @@ package com.fiap.fiapburger.adapter.in.controller;
 import com.fiap.fiapburger.adapter.in.controller.mapper.PagamentoMapper;
 import com.fiap.fiapburger.adapter.in.controller.request.EfetuarPagamentoRequest;
 import com.fiap.fiapburger.adapter.in.controller.response.ConsultarStatusPagamentoResponse;
+import com.fiap.fiapburger.adapter.in.controller.response.WebhookPagamentoResponse;
 import com.fiap.fiapburger.adapter.in.controller.response.EfetuarPagamentoResponse;
 import com.fiap.fiapburger.adapter.in.controller.response.PagamentoResponse;
-import com.fiap.fiapburger.adapter.in.controller.response.PedidoResponse;
-import com.fiap.fiapburger.application.core.domain.PedidoDTO;
 import com.fiap.fiapburger.application.ports.in.pagamento.ConsultarStatusPagamentoInputPort;
+import com.fiap.fiapburger.application.ports.in.pagamento.WebhookPagamentoInputPort;
 import com.fiap.fiapburger.application.ports.in.pagamento.EfetuarPagamentoInputPort;
 import com.fiap.fiapburger.application.ports.in.pagamento.ListarMeioPagamentoInputPort;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -30,7 +29,10 @@ public class PagamentoController {
     private EfetuarPagamentoInputPort efetuarPagamentoInputPort;
 
     @Autowired
-    private ConsultarStatusPagamentoInputPort consultarStatusPagamentoInputPort;
+    private WebhookPagamentoInputPort webhookPagamentoInputPort;
+
+    @Autowired
+    private ConsultarStatusPagamentoInputPort consultarStatusInputPort;
 
     @Autowired
     private PagamentoMapper pagamentoMapper;
@@ -52,10 +54,18 @@ public class PagamentoController {
     };
 
     @GetMapping("/{id}")
-    public ResponseEntity<ConsultarStatusPagamentoResponse> consultaStatusPagamento(@PathVariable String id){
-        ConsultarStatusPagamentoResponse statusPagamento = new ConsultarStatusPagamentoResponse();
-        statusPagamento.setIdPedido(id);
-        var pedido = consultarStatusPagamentoInputPort.consultarStatusPagamento(statusPagamento);
+    public ResponseEntity<WebhookPagamentoResponse> webhookPagamento(@PathVariable String id){
+        WebhookPagamentoResponse webhookPagamento = new WebhookPagamentoResponse();
+        webhookPagamento.setIdPedido(id);
+        var pedido = webhookPagamentoInputPort.webhookPagamento(webhookPagamento);
+        return ResponseEntity.ok(pedido);
+    }
+
+    @GetMapping("/consultar/{id}")
+    public ResponseEntity<ConsultarStatusPagamentoResponse> consultarStatusPagamento(@PathVariable String id){
+        ConsultarStatusPagamentoResponse consultarStatusPagamento = new ConsultarStatusPagamentoResponse();
+        consultarStatusPagamento.setIdPedido(id);
+        var pedido = consultarStatusInputPort.consultarStatusPagamento(consultarStatusPagamento);
         return ResponseEntity.ok(pedido);
     }
 
