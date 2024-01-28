@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+  labels:
+    app: postgres-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-fiap-burger
+  template:
+    metadata:
+      labels:
+        app: db-fiap-burger
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:latest
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: fiap-burger-secret
+                  key: spring.datasource.username
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: fiap-burger-secret
+                  key: spring.datasource.password
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+            limits:
+              memory: "256Mi"
+              cpu: "400m"
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: postgres-script
+              mountPath: /docker-entrypoint-initdb.d
+      volumes:
+        - name: postgres-script
+          configMap:
+            name: postgres-sql-configmap
