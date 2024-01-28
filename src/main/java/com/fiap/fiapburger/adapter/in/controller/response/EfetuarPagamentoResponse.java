@@ -27,4 +27,7 @@ public class EfetuarPagamentoResponse implements Serializable {
 
     @JsonProperty("qr_code")
     private String qrCode;
+
+    @JsonProperty("url_webhook")
+    private String urlWebhook;
 }

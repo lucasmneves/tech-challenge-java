@@ -19,7 +19,7 @@ public class EfetuarPagamentoUseCase implements EfetuarPagamentoInputPort {
 
         efetuarPagamentoResponse.setStatus("Pendente");
         efetuarPagamentoResponse.setQrCode("0000028930293029309COM.MERCADOLIBRE012983012780as9880-28379-2938291-sa1203891702856749012831s08ag89s7Testing21983xx12382718");
-
+        efetuarPagamentoResponse.setUrlWebhook("localhost:8989/pagamento/" + efetuarPagamentoResponse.getIdPedido());
         return this.efetuarPagamentoOutputPort.efetuarPagamento(efetuarPagamentoResponse);
     }
 }

@@ -17,9 +17,6 @@ public class ConsultarStatusPagamentoUseCase implements ConsultarStatusPagamento
     @Override
     public ConsultarStatusPagamentoResponse consultarStatusPagamento(ConsultarStatusPagamentoResponse consultarStatusPagamentoResponse) {
 
-        consultarStatusPagamentoResponse.setStatus("Confirmado");
-        consultarStatusPagamentoResponse.setMensagem("Pagamento confirmado!");
-
         return this.consultarStatusPagamentoOutputPort.consultarStatusPagamento(consultarStatusPagamentoResponse);
     }
 }

@@ -29,14 +29,10 @@ public class WebhookPagamentoAdapter implements WebhookPagamentoOutputPort {
     @Override
     public WebhookPagamentoResponse webhookPagamento(WebhookPagamentoResponse webhookPagamentoResponse) {
 
-        Optional<PagamentoEntity> pagamento = pagamentoRepository.findById("3"); //Tipo pagto - Mercado pago
-        //Optional<PedidoEntity> pedido = pedidoRepository.findById(consultarStatusPagamentoResponse.getIdPedido());
-
         Optional<PedidoEntity> pedido = pedidoRepository.findById(webhookPagamentoResponse.getIdPedido());
         if(pedido.isPresent()){
-            webhookPagamentoResponse.setTipoPagamento(pagamento.get().getNome());
-            webhookPagamentoResponse.setValor(pedido.get().getValor_total());
-            webhookPagamentoResponse.setSenha(pedido.get().getSenha());
+            pedido.get().setId_status("4");
+            pedidoRepository.save(pedido.get());
         }else{
             throw new ClienteNaoEncontradoException(ExceptionsMessageEnum.PEDIDO_NAO_ENCONTRADO.value());
         }

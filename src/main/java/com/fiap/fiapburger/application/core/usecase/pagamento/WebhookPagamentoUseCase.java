@@ -13,10 +13,7 @@ public class WebhookPagamentoUseCase implements WebhookPagamentoInputPort {
     }
     @Override
     public WebhookPagamentoResponse webhookPagamento(WebhookPagamentoResponse webhookPagamentoResponse) {
-
-        webhookPagamentoResponse.setStatus("Confirmado");
-        webhookPagamentoResponse.setMensagem("Pagamento confirmado!");
-
+        webhookPagamentoResponse.setStatus("Pagamento confirmado!");
         return this.webhookPagamentoOutputPort.webhookPagamento(webhookPagamentoResponse);
     }
 }
