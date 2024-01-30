@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tech-challenge-java-service
+spec:
+  selector:
+    app: tech-challenge-java
+  ports:
+    - protocol: TCP
+      port: 8989
+      targetPort: 8989
+  type: ClusterIP

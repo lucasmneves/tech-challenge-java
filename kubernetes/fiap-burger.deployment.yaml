@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fiap-burger-deployment
+  labels:
+    app: fiap-burger-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fiap-burger-api
+  template:
+    metadata:
+      labels:
+        app: fiap-burger-api
+    spec:
+      containers:
+        - name: fiap-burger-api
+          image: alexcesarnascimento/dh-fiap-burger:0.0.1
+          resources:
+            requests:
+              memory: "128Mi" 
+              cpu: "200m"    
+            limits:
+              memory: "512Mi"
+              cpu: "200m"    
+          ports:
+            - containerPort: 8989
+              protocol: TCP
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: constantes-configmap
+                  key: spring.datasource.url
+            - name: SPRING_DATASOURCE_DRIVER-CLASS-NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: constantes-configmap
+                  key: spring.datasource.driverClassName
+            - name: SPRING_DATASOURCE_JPA_DATABASE-PLATFORM
+              valueFrom:
+                configMapKeyRef:
+                  name: constantes-configmap
+                  key: spring.datasource.jpa.database-platform
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: fiap-burger-secret
+                  key: spring.datasource.username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: fiap-burger-secret
+                  key: spring.datasource.password
