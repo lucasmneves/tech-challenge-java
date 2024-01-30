@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: fiap-burger-api
-          image: alexcesarnascimento/dh-fiap-burger:0.0.1
+          image: alexcesarnascimento/dh-fiap-burger:0.0.2
           resources:
             requests:
               memory: "128Mi" 
