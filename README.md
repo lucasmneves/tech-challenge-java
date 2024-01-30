@@ -21,19 +21,55 @@ Este projeto faz parte de um sistema de autoatendimento de fast food desenvolvid
 - **Banco de Dados**: PostgreSQL
 - **ORM**: Hibernate
 
-## Como Rodar o Projeto
+## Como Rodar o Projeto com docker
 
 1. **Pré-requisitos**:
-    - Java JDK 17
-    - Maven instalado
-    - Docker instalado e em execução
+   - Java JDK 17
+   - Maven instalado
+   - Docker instalado e em execução
 
 2. Rode o comando `mvn clean package -DskipTests` na raiz do projeto para gerar o arquivo .jar
 
 3. Em seguida rode o comando `docker-compose up` para iniciar os containers do banco de dados e da aplicação
-   
+
 ## Arquitetura
 A arquitetura utiliza diversos serviços da AWS e tecnologias Kubernetes para gerenciar e escalar automaticamente o aplicativo de fast food, lidando com tráfego de entrada, processamento de pedidos e integração com serviços externos de pagamento.
+
+
+## Como Rodar o Projeto com kubernates
+
+As instruções a seguir detalham a ordem e os comandos para subir os componentes do projeto no Kubernetes.
+
+### ConfigMaps
+```
+kubectl apply -f constantes.configmap.yaml
+kubectl apply -f postgres-sql.configmap.yaml
+```
+
+### Secrets
+```
+kubectl apply -f db-login.secrets.yaml
+```
+
+### Services
+```
+kubectl apply -f fiap-burger.svc.yaml
+kubectl apply -f postgres.svc.yaml
+```
+
+### Deployments
+```
+kubectl apply -f postgres.deployment.yaml
+kubectl apply -f fiap-burger.deployment.yaml
+```
+
+### Horizontal Pod Autoscaler
+```
+kubectl apply -f fiap-burger.hpa.yaml
+```
+
+
+
 
 **Componentes Principais**
 - AWS Load Balancer: Distribui o tráfego de entrada para os serviços dentro do cluster Kubernetes.
@@ -49,3 +85,4 @@ A arquitetura utiliza diversos serviços da AWS e tecnologias Kubernetes para ge
 - VPC: Rede virtual privada da AWS.
 - CloudWatch: Monitoramento e logs.
 - Auto Scaling Group: Escala automaticamente as instâncias EC2.
+  
