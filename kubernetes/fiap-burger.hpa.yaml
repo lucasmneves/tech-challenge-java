@@ -1,4 +1,4 @@
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: tech-challenge-java-hpa
@@ -9,10 +9,4 @@ spec:
     name: fiap-burger-deployment
   minReplicas: 1
   maxReplicas: 4
-  metrics:
-    - type: Resource
-      resource:
-        name: memory
-        target:
-          type: Utilization
-          averageUtilization: 70
+  targetCPUUtilizationPercentage: 70
